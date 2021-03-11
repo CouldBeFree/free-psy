@@ -30,7 +30,7 @@ module.exports = {
       .cookie('token', token, options)
       .json({
         success: true,
-        user,
+        data: user,
         token
       })
   }
