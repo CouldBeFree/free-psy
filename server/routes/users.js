@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
 const { sendTokenResponse } = require('../config/auth');
+const passportSignIn = passport.authenticate('local', { session: false });
 
 // Register handle
 router.post('/register', async (req, res, next) => {
@@ -35,7 +36,6 @@ router.post('/register', async (req, res, next) => {
       sendTokenResponse(newUser, 201, res);
     }
   } catch (err) {
-    console.dir(err);
     res.status(500).json({
       status: 'error',
       message: err
@@ -44,19 +44,10 @@ router.post('/register', async (req, res, next) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
-});
+router.post('/login', passportSignIn, async (req, res, next) => {
+  const user = await User.find({"_id": req.user._id});
 
-// Logout
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/users/login');
+  sendTokenResponse(user[0], 200, res);
 });
 
 module.exports = router;
