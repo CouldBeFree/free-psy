@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true

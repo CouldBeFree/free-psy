@@ -1,17 +1,4 @@
 module.exports = {
-  ensureAuthenticated: function(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    req.flash('error_msg', 'Please log in to view that resource');
-    res.redirect('/users/login');
-  },
-  forwardAuthenticated: function(req, res, next) {
-    if (!req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect('/dashboard');
-  },
   sendTokenResponse: function(user, statusCode, res) {
     // Create token
     const token = user.getSignedJwtToken();
@@ -30,7 +17,7 @@ module.exports = {
       .cookie('token', token, options)
       .json({
         success: true,
-        user,
+        data: user,
         token
       })
   }
