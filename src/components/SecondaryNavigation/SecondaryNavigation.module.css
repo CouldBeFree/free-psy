@@ -1,0 +1,65 @@
+.navigation {
+  display: flex;
+  color: #517361;
+	font-family: 'Montserrat Medium';
+}
+
+.linkBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  justify-content: center;
+}
+
+.contacts {
+	font-family: 'Montserrat SemiBold';
+}
+
+.link {
+  margin: 5px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.linkBlock > .link:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #614885;
+  width: 0;
+  overflow: hidden;
+  transition: all .5s;
+}
+
+.navigation .linkBlock:first-child .link:before {
+  content: "Контакти:\00a0 freepsy@ukr.net";
+}
+
+.navigation .linkBlock:nth-child(2) .link:first-child::before {
+  content: "Для\00a0 психологів";
+}
+
+.navigation .linkBlock:nth-child(2) .link:last-child::before {
+  content: "Для\00a0 клієнта";
+}
+
+.navigation .linkBlock:nth-child(3) .link:first-child::before {
+  content: "Реєстрація";
+}
+
+.navigation .linkBlock:nth-child(3) .link:last-child::before {
+  content: "Увійти";
+}
+
+.navigation .linkBlock:nth-child(4) .link:first-child::before {
+  content: "Підтримати";
+}
+
+.navigation .linkBlock:nth-child(4) .link:last-child::before {
+  content: "Задати\00a0 запитання";
+}
+
+.link:hover:before {
+  width: 100%;
+}
