@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  align-self: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 58px;
+  width: 74px;
+  background-color: #A4C883;
+  border-radius: 15px;
+  font-size: 58px;
+  color: #517361;
+  user-select: none;
+  box-shadow: 0 0 25px 1px rgba(255, 255, 255, 0.495);
+  margin-right: 5px;
+}
+
+.headline {
+  margin: 0;
+  font-size: 58px;
+  line-height: 58px;
+  color: #614885;
+	font-family: 'Montserrat SemiBold';
+  user-select: none;
+}

@@ -1,0 +1,8 @@
+.footer {
+  height: 152px;
+  background: linear-gradient(rgba(223, 210, 146, 0), rgba(223, 210, 146, .55));
+  display: flex;
+  padding: 0 15px;
+  align-items: center;
+  justify-content: space-between;
+}
