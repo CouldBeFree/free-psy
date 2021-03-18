@@ -6,10 +6,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient( rgba(223, 210, 146, 0), #DFD292);
+  background: linear-gradient( var(--background-secondary), var(--background-primary));
   border-radius: 15px;
   font-size: 24px;
-  color: #517361;
+  color: var(--primary-darker);
 }
 
 .name {
@@ -25,4 +25,12 @@
 
 .photo {
   width: 85%;
+}
+
+@media screen and (max-width: 868px) {
+  .card {
+    height: 376px;
+    width: 250px;
+    font-size: 16px;
+  }
 }

@@ -1,6 +1,6 @@
 .navigation {
   display: flex;
-  color: #517361;
+  color: var(--primary-darker);
 	font-family: 'Montserrat Medium';
 }
 
@@ -20,13 +20,15 @@
   margin: 5px 0;
   cursor: pointer;
   position: relative;
+  text-decoration: none;
+  color: var(--primary-darker);
 }
 
 .linkBlock > .link:before {
   position: absolute;
   top: 0;
   left: 0;
-  color: #614885;
+  color: var(--secondary);
   width: 0;
   overflow: hidden;
   transition: all .5s;
@@ -62,4 +64,16 @@
 
 .link:hover:before {
   width: 100%;
+}
+
+@media screen and (max-width: 948px) {
+  .link {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .navigation {
+    flex-direction: column;
+  }
 }
