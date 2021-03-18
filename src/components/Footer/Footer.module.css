@@ -1,8 +1,35 @@
 .footer {
-  height: 152px;
-  background: linear-gradient(rgba(223, 210, 146, 0), rgba(223, 210, 146, .55));
+  background: linear-gradient(var(--background-secondary), var(--background-semitransparent));
   display: flex;
-  padding: 0 15px;
+  padding: 15px;
   align-items: center;
   justify-content: space-between;
+}
+
+.logoBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 5px 0;
+  color: var(--primary-darker);
+}
+
+@media screen and (max-width: 948px) {
+  .logoBlock {
+    transform: scale(.8) translateX(-10%);
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .logoBlock {
+    transform: scale(.8) translateX(0);
+  }
+
+  .footer {
+    flex-direction: column;
+  }
 }
