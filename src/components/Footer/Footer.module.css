@@ -2,6 +2,13 @@
   background: linear-gradient(var(--background-secondary), var(--background-semitransparent));
   display: flex;
   padding: 15px;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 1530px;
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -28,8 +35,11 @@
   .logoBlock {
     transform: scale(.8) translateX(0);
   }
+}
 
-  .footer {
+@media screen and (max-width: 820px) {
+
+  .wrapper {
     flex-direction: column;
   }
 }

@@ -6,12 +6,13 @@ import SecondaryNavigation from './SecondaryNavigation/SecondaryNavigation';
 const Footer = () => {
   return (
     <div className={style.footer}>
-      <div className={style.logoBlock}>
-        <Logo />
-        <h5 className={style.title}>Спільно з ГО ‘Інсайт’ </h5>
+      <div className={style.wrapper}>
+        <div className={style.logoBlock}>
+          <Logo />
+          <h5 className={style.title}>Спільно з ГО ‘Інсайт’ </h5>
+        </div>
+        <SecondaryNavigation />
       </div>
-
-      <SecondaryNavigation />
     </div>
   )
 }
