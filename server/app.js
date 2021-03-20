@@ -1,13 +1,21 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 
 require('dotenv').config();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
+//Body parser
+app.use(express.json());
+
+//Cookie parser
+app.use(cookieParser());
+
+//Dev logging middleware
+if(process.env.NODE_ENV === 'development'){
+  app.use(morgan('dev'))
+}
 
 app.use('/uploads', express.static('uploads'));
 
