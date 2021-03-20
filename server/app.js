@@ -2,16 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 
 require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
-// Passport Config
-require('./config/passport')(passport);
 
 app.use('/uploads', express.static('uploads'));
 
@@ -30,8 +26,10 @@ db.once('open', () => {
 });
 
 // Routes
-app.use('/', require('./routes/index.js'));
-app.use('/users', require('./routes/users.js'));
+const auth = require('./routes/auth');
+
+//Mount routes
+app.use('/api/v1/auth', auth);
 
 const port = 5050;
 const server = app.listen(port, () => {

@@ -3,34 +3,36 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-const validateEmail = email =>  {
-  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email)
-};
-
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: [true, 'Name is required']
   },
   email: {
     type: String,
-    required: true,
-    trim: true,
-    validate: [validateEmail, 'Please fill a valid email address']
+    unique: true,
+    required: [true, 'Email is required']
   },
   password: {
     type: String,
-    required: true
+    required: [true, 'Password is required'],
+    minLength: 6,
+    select: false
   },
   date: {
+    type: Date,
+    default: Date.now
+  },
+  resetPasswordToken: String,
+  resetPasswordExpire: Date,
+  createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
 // Encrypt password
-UserSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
 
   const salt = await bcrypt.genSalt(10);
 
@@ -41,19 +43,19 @@ UserSchema.pre('save', async function (next) {
 });
 
 // Sign JWT and return
-UserSchema.methods.getSignedJwtToken = function(){
+userSchema.methods.getSignedJwtToken = function(){
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE
   })
 };
 
 // Match user entered password to hashed password in database
-UserSchema.methods.matchPassword = async function(password){
-  return await bcrypt.compare(password, this.local.password);
+userSchema.methods.matchPassword = async function(password){
+  return await bcrypt.compare(password, this.password);
 };
 
 // Generate and reset password token
-UserSchema.methods.getResetPasswordToken = async function(){
+userSchema.methods.getResetPasswordToken = async function(){
   // Generate token
   const resetToken = crypto.randomBytes(20).toLocaleString('hex');
 
@@ -67,4 +69,4 @@ UserSchema.methods.getResetPasswordToken = async function(){
 };
 
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);
