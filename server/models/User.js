@@ -8,6 +8,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required']
   },
+  education: String,
+  approaches: String,
+  workWith: String,
+  aboutMe: String,
+  userType: {
+    type: String,
+    required: [true, 'User type is required'],
+    enum: [
+      "психолог",
+      "користувач"
+    ]
+  },
   email: {
     type: String,
     unique: true,
@@ -28,6 +40,9 @@ const userSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  photo: {
+    type: String
   }
 });
 

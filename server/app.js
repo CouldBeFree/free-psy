@@ -3,11 +3,24 @@ const app = express();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const cors = require('cors');
+const multerSettings = require('./utils/multer');
 
 require('dotenv').config();
 
+// Multer middleware
+app.all('*', multerSettings);
+
 //Body parser
 app.use(express.json());
+
+// Enable CORS
+/*app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:8080'
+}));*/
+
+app.use(cors());
 
 //Cookie parser
 app.use(cookieParser());
@@ -35,9 +48,11 @@ db.once('open', () => {
 
 // Routes
 const auth = require('./routes/auth');
+const users = require('./routes/users');
 
 //Mount routes
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/users', users);
 
 const port = 5050;
 const server = app.listen(port, () => {

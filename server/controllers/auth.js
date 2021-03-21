@@ -7,15 +7,22 @@ const crypto = require('crypto');
 // @route   POST /api/v1/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
-  const { name, password, email } = req.body;
+  const { name, password, email, userType } = req.body;
 
-  const user = await User.create({
+  const user = await User.findOne({ email });
+
+  if (user) {
+    return next(new errorResponse('User with this email already registered', 401))
+  }
+
+  const newUser = await User.create({
     name,
     password,
-    email
+    email,
+    userType
   });
 
-  sendTokenResponse(user, 200, res);
+  sendTokenResponse(newUser, 200, res);
 });
 
 // @desc    Login user
@@ -31,7 +38,6 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // Check for user
   const user = await User.findOne({ email }).select('+password');
-  console.info('user', user);
 
   if(!user){
     return next(new errorResponse('Invalid credentials', 401))
