@@ -53,10 +53,19 @@
   background-color: var(--background-secondary);
 }
 
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+}
+
 .subtitile {
   margin-top: 15px;
   color: var(--secondary);
   font-size: 14px;
+}
+
+.error {
+  color: #DF000C;
 }
 
 .checkboxBlock {

@@ -22,9 +22,10 @@
   --primary: #A4C883;
   --primary-darker: #517361;
   --secondary: #614885;
-  --background-primary: rgb(223, 210, 146);
-  --background-translucent: rgba(223, 210, 146, .86);
-  --background-semitransparent: rgba(223, 210, 146, .55);
+  --background: 223, 210, 146;
+  --background-primary: rgb(var(--background));
+  --background-translucent: rgba(var(--background), .86);
+  --background-semitransparent: rgba(var(--background), .55);
   --background-secondary: #FFF;
 }
 
