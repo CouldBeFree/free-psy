@@ -27,7 +27,7 @@ const Navbar = () => {
         <NavLink onClick={onChengeURL} to="/" className={style.link}>Для психологів</NavLink>
         <NavLink onClick={onChengeURL} to="/" className={style.link}>Для клієнта</NavLink>
         <NavLink onClick={onChengeURL} to="/registration" className={style.link}>Реєстрація</NavLink>
-        <NavLink onClick={onChengeURL} to="/" className={style.link}>Увійти</NavLink>
+        <NavLink onClick={onChengeURL} to="/authentication" className={style.link}>Увійти</NavLink>
       </div>
     </div>
   )

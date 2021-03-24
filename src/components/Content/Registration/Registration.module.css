@@ -1,4 +1,4 @@
-.registration {
+.pageBackground {
   width: 100%;
   height: 100%;
   display: flex;
@@ -6,6 +6,10 @@
   padding: 0 15px;
   box-sizing: border-box;
   background: linear-gradient(var(--background-translucent), var(--background-secondary));
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 
 .wrapper {

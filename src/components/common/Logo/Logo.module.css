@@ -1,6 +1,7 @@
 .logo {
   display: flex;
   align-self: center;
+  cursor: pointer;
 }
 
 .icon {
@@ -19,10 +20,30 @@
 }
 
 .headline {
+  position: relative;
   margin: 0;
   font-size: 40px;
   line-height: 40px;
   color: var(--secondary);
 	font-family: 'Montserrat SemiBold';
   user-select: none;
+}
+
+.headline:before {
+  position: absolute;
+  content: "FreePsy";
+  top: 0;
+  left: 0;
+  width: 0;
+  color: var(--primary-darker);
+  overflow: hidden;
+  transition: all .5s;
+}
+
+.headline:hover:before {
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
 }

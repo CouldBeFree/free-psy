@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Card.module.css';
-import photoExample from '../../assets/images/example.webp'
+import photoExample from '../../../assets/images/example.webp'
 
 interface CardProps {
   fullName?: string,

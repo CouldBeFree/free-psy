@@ -24,6 +24,11 @@
   color: var(--primary-darker);
 }
 
+.emailLink {
+  text-decoration: none;
+  color: var(--primary-darker);
+}
+
 .linkBlock > .link:before {
   position: absolute;
   top: 0;

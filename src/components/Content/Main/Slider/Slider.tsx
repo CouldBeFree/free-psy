@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Slider.module.css';
 import Button from '../../../common/Button/Button';
-import Card from '../../../Card/Card';
+import Card from '../../../common/Card/Card';
 const Slider = () => {
   return (
     <div className={style.sliderBlock}>
