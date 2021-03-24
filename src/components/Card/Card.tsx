@@ -12,7 +12,7 @@ const Card = ({ fullName = 'Мазур Вікторія', photoUrl = '../../asse
   return (
     <div className={style.card}>
       <p className={style.name}>{fullName}</p>
-      <img className={style.photo} src={photoUrl} alt="Фото психолога" />
+      <img className={style.photo} src={photoExample} alt="Фото психолога" />
       <p className={style.info}>{shortInfo}</p>
     </div>
   )

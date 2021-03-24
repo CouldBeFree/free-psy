@@ -1,0 +1,94 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 400px;
+  flex-grow: 1;
+  min-height: 425px;
+  padding: 15px 50px;
+  background-color: var(--background-secondary);
+  border-radius: 15px;
+  box-shadow: 0 0 15px 0 var(--primary-darker);
+  box-sizing: border-box;
+}
+
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  padding: 0 15px;
+  height: 45px;
+  background-color: var(--background-semitransparent);
+  outline: none;
+  border: none;
+  border-radius: 40px;
+  box-shadow: inset 0 0 0 25px var(--background-semitransparent);
+}
+
+.title {
+  position: relative;
+  font-size: 48px;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+  color: var(--secondary);
+  z-index: 2;
+}
+
+.title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--secondary);
+  z-index: -1;
+}
+
+.title:before  {
+  content: "Реєстрація";
+  background-color: var(--background-secondary);
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitile {
+  margin-top: 15px;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.error {
+  color: #DF000C;
+}
+
+.checkboxBlock {
+  margin: 15px 0;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .form {
+    width: 100%;
+    min-width: 345px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .form {
+    padding: 15px;
+  }
+}

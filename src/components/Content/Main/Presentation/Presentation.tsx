@@ -10,10 +10,10 @@ const Presentation = () => {
         <div className={style.textBlock}>
           <h2 className={style.slogan}>Безкоштовна психологічна онлайн допомога</h2>
           <p className={style.description}>Тут ви зможете знайти психолога який працюватиме з вами на волонтерських засадах. Ваші консультації проходитимуть анонімно і конфіденційно</p>
-          <Button>Обрати волонтера</Button>
+          <Button >Обрати волонтера</Button>
         </div>
         <div className={style.imageBlock}>
-          <img className={style.image} src={mainImage} alt="main image" />
+          <img className={style.image} src={mainImage} alt="мультиплікаційна картинка" />
         </div>
       </div>
     </div>
