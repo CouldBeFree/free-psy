@@ -1,4 +1,4 @@
-import React, { FormEventHandler } from 'react';
+import React from 'react';
 import style from './Button.module.css';
 
 interface ButtonProps {
