@@ -5,10 +5,15 @@ import style from './LoginForm.module.css';
 import { required, minLength, maxLength, repeatPassword, composeValidators } from '../../../../utilities/validators/general';
 import { passwordPattern, emailPattern } from '../../../../utilities/validators/pattern';
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { fetchRegister } from "../../../../redux/authenticationSlcie";
 
 const LoginForm = () => {
 
+  const dispatch = useDispatch()
+
   const onSubmit = (formData: any) => {
+    dispatch(fetchRegister());
     console.log(formData);
   }
 
