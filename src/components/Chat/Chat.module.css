@@ -1,0 +1,6 @@
+.chatBlock {
+  grid-template-areas: 
+            "a a a"
+            "b c c"
+            "b c c";
+}
