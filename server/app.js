@@ -1,17 +1,34 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const cors = require('cors');
+const multerSettings = require('./utils/multer');
 
 require('dotenv').config();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
-// Passport Config
-require('./config/passport')(passport);
+// Multer middleware
+app.all('*', multerSettings);
+
+//Body parser
+app.use(express.json());
+
+// Enable CORS
+/*app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:8080'
+}));*/
+
+app.use(cors());
+
+//Cookie parser
+app.use(cookieParser());
+
+//Dev logging middleware
+if(process.env.NODE_ENV === 'development'){
+  app.use(morgan('dev'))
+}
 
 app.use('/uploads', express.static('uploads'));
 
@@ -30,8 +47,12 @@ db.once('open', () => {
 });
 
 // Routes
-app.use('/', require('./routes/index.js'));
-app.use('/users', require('./routes/users.js'));
+const auth = require('./routes/auth');
+const users = require('./routes/users');
+
+//Mount routes
+app.use('/api/v1/auth', auth);
+app.use('/api/v1/users', users);
 
 const port = 5050;
 const server = app.listen(port, () => {
