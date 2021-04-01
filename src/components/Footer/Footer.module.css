@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(var(--background-secondary), var(--background-semitransparent));
+  background: linear-gradient(var(--blank), var(--tertiary-semitransparent));
   display: flex;
   padding: 15px;
   justify-content: center;

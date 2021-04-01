@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient( var(--background-secondary), var(--background-primary));
+  background: linear-gradient( var(--blank), var(--tertiary));
   border-radius: 15px;
   font-size: 24px;
   color: var(--primary-darker);

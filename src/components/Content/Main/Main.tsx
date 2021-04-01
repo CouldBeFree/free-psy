@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Presentation from './Presentation/Presentation';
 import Slider from './Slider/Slider';
 
-const Main = () => {
+const Main: FunctionComponent = () => {
   return (
     <>
       <Presentation />

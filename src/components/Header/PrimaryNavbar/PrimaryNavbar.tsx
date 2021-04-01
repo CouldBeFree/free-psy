@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './PrimaryNavbar.module.css';
 
-const Navbar = () => {
+const Navbar: FunctionComponent = () => {
 
   const [showNavbar, setShowNavbar] = useState(false);
 

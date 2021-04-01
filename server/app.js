@@ -15,18 +15,17 @@ app.all('*', multerSettings);
 app.use(express.json());
 
 // Enable CORS
-/*app.use(cors({
+app.use(cors({
   credentials: true,
-  origin: 'http://localhost:8080'
-}));*/
+  origin: 'http://localhost:3000'
+}));
 
-app.use(cors());
 
 //Cookie parser
 app.use(cookieParser());
 
 //Dev logging middleware
-if(process.env.NODE_ENV === 'development'){
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 

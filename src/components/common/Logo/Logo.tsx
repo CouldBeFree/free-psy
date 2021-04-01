@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { NavLink } from "react-router-dom";
 import style from './Logo.module.css';
 
-const Logo = () => {
+const Logo: FunctionComponent = () => {
   return (
     <NavLink to="/" className={style.link}>
       <div className={style.logo}>

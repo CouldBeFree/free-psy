@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import style from "./ChatNavigation.module.css";
 
-const ChatNavigation = () => {
+const ChatNavigation: FunctionComponent = () => {
   return (
     <div className={style.chatNavigationBlock}>
 

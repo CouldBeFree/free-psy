@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Button from '../../../common/Button/Button';
 import { Form, Field } from 'react-final-form';
-import style from './LoginForm.module.css';
+import style from './SignUpForm.module.css';
 import { required, minLength, maxLength, repeatPassword, composeValidators } from '../../../../utilities/validators/general';
 import { passwordPattern, emailPattern } from '../../../../utilities/validators/pattern';
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
 import { fetchRegister } from "../../../../redux/authenticationSlcie";
+import { RegisterFormDataInteface } from "../../../../types/registerFormData";
 
-const LoginForm = () => {
+const SignUpForm: FunctionComponent = () => {
 
   const dispatch = useDispatch()
 
-  const onSubmit = (formData: any) => {
-    dispatch(fetchRegister());
-    console.log(formData);
+  const onSubmit = (formData: RegisterFormDataInteface) => {
+
+    dispatch(fetchRegister(formData));
+    //   console.log(formData)
+
+    //   const url = 'http://localhost:5050/api/v1/auth/register';
+
+    //   fetch(url, {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       name: nickName,
+    //       email: email,
+    //       password: password,
+    //       userType: 'психолог'
+    //     }),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   console.log(formData);
   }
 
   return (
@@ -87,4 +105,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm;
+export default SignUpForm;

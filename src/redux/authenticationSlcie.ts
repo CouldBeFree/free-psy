@@ -1,25 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AuthenticationState } from "../types/authenticationState";
+import { AuthenticationStateInterface } from "../types/authenticationState";
+import { FetchRegisterActionInterface } from "../types/fetchRegisterAction";
+import { SetCurrentUserActionInterface } from "../types/setCurrentUserAction";
 
 const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
+    isAuthenticated: null,
+    currentUser: null,
     isSubmitting: false,
-    isAuthenticated: false,
+    validationErrors: null
   },
   reducers: {
-    fetchRegister: (): void => { },
-    register: (state: AuthenticationState): void => {
+    fetchRegister: (state: AuthenticationStateInterface, action: FetchRegisterActionInterface): void => { // eslint-disable-line
+      // do nothing
+    },
+    register: (state: AuthenticationStateInterface): void => {
       state.isSubmitting = true;
     },
-    registerSuccess: (state: AuthenticationState): void => {
+    registerSuccess: (state: AuthenticationStateInterface): void => {
+      state.isSubmitting = false;
+      state.isAuthenticated = true;
+    },
+    registerFailure: (state: AuthenticationStateInterface): void => {
+      state.isSubmitting = false;
+      state.isAuthenticated = false;
+    },
+    fetchLogin: (state: AuthenticationStateInterface, action: FetchRegisterActionInterface): void => { // eslint-disable-line
+      // do nothing
+    },
+    login: (state: AuthenticationStateInterface): void => {
+      state.isSubmitting = true;
+    },
+    loginSuccess: (state: AuthenticationStateInterface): void => {
       state.isSubmitting = false;
     },
-    registerFailure: (state: AuthenticationState): void => {
+    loginFailure: (state: AuthenticationStateInterface): void => {
       state.isSubmitting = false;
+    },
+    fetchAuthMe: (): void => { // eslint-disable-line
+      // do nothing
+    },
+    setCurrentUser (state: AuthenticationStateInterface, action: SetCurrentUserActionInterface ): void {
+      state.currentUser = action.payload;
+      state.isAuthenticated = true;
     }
   }
 });
 
-export default authenticationSlice.reducer
-export const { fetchRegister, register, registerSuccess, registerFailure } = authenticationSlice.actions
+export default authenticationSlice.reducer;
+export const { fetchRegister, register, registerSuccess, registerFailure,
+  fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser } = authenticationSlice.actions;

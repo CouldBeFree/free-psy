@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from './Footer.module.css';
 import Logo from '../common/Logo/Logo';
 import SecondaryNavigation from './SecondaryNavigation/SecondaryNavigation';
 
-const Footer = () => {
+const Footer: FunctionComponent = () => {
   return (
     <div className={style.footer}>
       <div className={style.wrapper}>

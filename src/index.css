@@ -19,14 +19,20 @@
 }
 
 :root {
-  --primary: #A4C883;
+  /* starting page*/
+  --primary-variable: 164, 200, 131; /* A4C883 */
+  --primary: rgb(var(--primary-variable));
   --primary-darker: #517361;
   --secondary: #614885;
-  --background: 223, 210, 146;
-  --background-primary: rgb(var(--background));
-  --background-translucent: rgba(var(--background), .86);
-  --background-semitransparent: rgba(var(--background), .55);
-  --background-secondary: #FFF;
+  --tertiary-variable: 223, 210, 146; /* DFD292 */
+  --tertiary: rgb(var(--tertiary-variable));
+  --tertiary-translucent: rgba(var(--tertiary-variable), .86);
+  --tertiary-semitransparent: rgba(var(--tertiary-variable), .55);
+  --blank: #FFF;
+  /* chat page*/
+  --primary-translucent: rgba(var(--primary-variable), .67);
+  --primary-light: rgba(var(--primary-variable), .27);
+  --tertiary-light: rgba(var(--tertiary), .27);
 }
 
 body {

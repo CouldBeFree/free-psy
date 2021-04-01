@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from './Registration.module.css';
 import registrationImage from '../../../assets/images/registration.png'
-import LoginForm from './LoginForm/LoginForm';
+import LoginForm from './SignUpForm/SignUpForm';
 
-const Registration = () => {
+const Registration: FunctionComponent = () => {
 
   return (
     <div className={style.pageBackground}>

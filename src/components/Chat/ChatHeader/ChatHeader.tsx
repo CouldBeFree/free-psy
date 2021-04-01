@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import style from "./ChatHeader.module.css";
 
-const ChatHeader = () => {
+const ChatHeader: FunctionComponent = () => {
   return (
     <div className={style.chatHeaderBlock}>
 

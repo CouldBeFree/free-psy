@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from '../Registration/Registration.module.css';
 import authenticationImage from '../../../assets/images/authentication.png';
-import SignUpForm from './SignUpForm/SignUpForm';
+import SignUpForm from './SignInForm/SignInForm';
 import classNames from "classnames";
 
-const Authentication = () => {
+const Login: FunctionComponent = () => {
 
   return (
     <div className={style.pageBackground}>
@@ -16,4 +16,4 @@ const Authentication = () => {
   )
 }
 
-export default Authentication;
+export default Login;
