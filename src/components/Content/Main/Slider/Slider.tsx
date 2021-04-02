@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from './Slider.module.css';
 import Button from '../../../common/Button/Button';
 import Card from '../../../common/Card/Card';
-const Slider = () => {
+
+const Slider: FunctionComponent = () => {
   return (
     <div className={style.sliderBlock}>
       <div className={style.wrapper}>

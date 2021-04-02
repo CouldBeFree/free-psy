@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Button from '../../../common/Button/Button';
 import { Form, Field } from 'react-final-form';
-import style from '../../Registration/LoginForm/LoginForm.module.css';
+import style from '../../Registration/SignUpForm/SignUpForm.module.css';
 import classNames from "classnames";
 
-const SignUpForm = () => {
+const SignInForm: FunctionComponent = () => {
 
-  const onSubmit = (formData: any) => {
-    console.log(formData);
+  const onSubmit = () => {
+    // dispatch(fetchLogin());
   }
 
   return (
@@ -44,4 +44,5 @@ const SignUpForm = () => {
   )
 }
 
-export default SignUpForm;
+export default SignInForm;
+

@@ -1,18 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
 import photoExample from '../../../assets/images/example.webp'
+import { CardProps } from "../../../types/props/CardProps";
 
-interface CardProps {
-  fullName?: string,
-  photoUrl?: string,
-  shortInfo?: string
-}
-
-const Card = ({ fullName = 'Мазур Вікторія', photoUrl = '../../assets/images/example.webp', shortInfo = 'Гештальт-терапевт' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({ fullName = 'Мазур Вікторія', photoUrl = photoExample, shortInfo = 'Гештальт-терапевт' }: CardProps) => {
   return (
     <div className={style.card}>
       <p className={style.name}>{fullName}</p>
-      <img className={style.photo} src={photoExample} alt="Фото психолога" />
+      <img className={style.photo} src={photoUrl} alt="Фото психолога" />
       <p className={style.info}>{shortInfo}</p>
     </div>
   )

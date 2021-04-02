@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './SecondaryNavigation.module.css';
 import classNames from "classnames";
 
-const SecondaryNavigation = () => {
+const SecondaryNavigation: FunctionComponent = () => {
   return (
     <div className={style.navigation}>
       <p className={classNames(style.linkBlock, style.contacts)}>

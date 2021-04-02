@@ -1,0 +1,4 @@
+.chatNavigationBlock {
+  grid-area: n;
+  background: linear-gradient(var(--primary-translucent), var(--primary-light));
+}

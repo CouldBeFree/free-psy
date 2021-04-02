@@ -6,7 +6,7 @@
   flex-grow: 1;
   min-height: 340px;
   padding: 15px 50px;
-  background-color: var(--background-secondary);
+  background-color: var(--blank);
   border-radius: 15px;
   box-shadow: 0 0 15px 0 var(--primary-darker);
   box-sizing: border-box;
@@ -20,11 +20,11 @@
 .field {
   padding: 0 15px;
   height: 45px;
-  background-color: var(--background-semitransparent);
+  background-color: var(--tertiary-semitransparent);
   outline: none;
   border: none;
   border-radius: 40px;
-  box-shadow: inset 0 0 0 25px var(--background-semitransparent);
+  box-shadow: inset 0 0 0 25px var(--tertiary-semitransparent);
 }
 
 .titleBlock {
@@ -42,7 +42,7 @@
   margin: 0;
   letter-spacing: 1px;
   color: var(--secondary);
-  background-color: var(--background-secondary);
+  background-color: var(--blank);
 }
 
 .line {

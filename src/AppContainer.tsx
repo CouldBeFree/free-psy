@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import { store } from "./redux";
 
-function AppContainer() {
+const AppContainer: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>

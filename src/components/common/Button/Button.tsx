@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
+import { ButtonProps } from "../../../types/props/ButtonProps";
 import style from './Button.module.css';
 
-interface ButtonProps {
-  children: string
-}
-
-const Button = ({ children }: ButtonProps) => {
+const Button: FunctionComponent<ButtonProps> = ({ children }: ButtonProps) => {
   return (
     <>
       <button className={style.button}>{children}</button>
