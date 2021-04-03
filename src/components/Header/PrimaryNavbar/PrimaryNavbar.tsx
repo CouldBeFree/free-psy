@@ -23,11 +23,11 @@ const Navbar: FunctionComponent = () => {
         <span className={style.thirdLine}></span>
       </div>
       <div className={style.navbar}>
-        <NavLink onClick={onChengeURL} to="/" className={style.link}>Головна</NavLink>
-        <NavLink onClick={onChengeURL} to="/" className={style.link}>Для психологів</NavLink>
-        <NavLink onClick={onChengeURL} to="/" className={style.link}>Для клієнта</NavLink>
-        <NavLink onClick={onChengeURL} to="/registration" className={style.link}>Реєстрація</NavLink>
-        <NavLink onClick={onChengeURL} to="/authentication" className={style.link}>Увійти</NavLink>
+        <NavLink onClick={onChengeURL} exact to="/" className={style.link} activeClassName={style.active}>Головна</NavLink>
+        <NavLink onClick={onChengeURL} exact to="/psychologist" className={style.link} activeClassName={style.active}>Для психологів</NavLink>
+        <NavLink onClick={onChengeURL} exact to="/client" className={style.link} activeClassName={style.active}>Для клієнтів</NavLink>
+        <NavLink onClick={onChengeURL} to="/registration" className={style.link} activeClassName={style.active}>Реєстрація</NavLink>
+        <NavLink onClick={onChengeURL} to="/authentication" className={style.link} activeClassName={style.active}>Увійти</NavLink>
       </div>
     </div>
   )

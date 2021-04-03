@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import { rootWatcher } from "../saga";
+import { rootWatcher } from "../sagas";
 import authenticationSlcie from "./authenticationSlcie";
 
 const sagaMiddleware = createSagaMiddleware();

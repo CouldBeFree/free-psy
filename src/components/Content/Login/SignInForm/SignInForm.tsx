@@ -3,11 +3,16 @@ import Button from '../../../common/Button/Button';
 import { Form, Field } from 'react-final-form';
 import style from '../../Registration/SignUpForm/SignUpForm.module.css';
 import classNames from "classnames";
+import { LoginFormData } from "../../../../types/loginFormData";
+import { useDispatch } from "react-redux";
+import { fetchLogin } from "../../../../redux/authenticationSlcie";
 
 const SignInForm: FunctionComponent = () => {
 
-  const onSubmit = () => {
-    // dispatch(fetchLogin());
+  const dispatch = useDispatch();
+
+  const onSubmit = (formData: LoginFormData) => {
+    dispatch(fetchLogin(formData));
   }
 
   return (
@@ -38,6 +43,7 @@ const SignInForm: FunctionComponent = () => {
           <Field name="rememberMe" id="rememberMe" component="input" type="checkbox" />
           <label htmlFor="rememberMe" className={classNames(style.subtitile, style.checkboxLabel)}>Запам’ятати мене</label>
         </div>
+        {/* <p className={style.backendError}>{backendError ? backendError : ""}</p> */}
         <Button>Увійти</Button>
       </form>
     )} />

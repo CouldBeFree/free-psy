@@ -37,6 +37,7 @@
   width: 0;
   overflow: hidden;
   transition: all .5s;
+  white-space: nowrap;
 }
 
 .navigation .linkBlock:first-child .link:before {
