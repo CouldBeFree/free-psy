@@ -48,7 +48,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   if(!isMatch){
     return next(new errorResponse('Invalid credentials', 401))
-  }
+  } 
 
   sendTokenResponse(user, 200, res);
 });
