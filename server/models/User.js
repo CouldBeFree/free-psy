@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'User type is required'],
     enum: [
-      "психолог",
-      "користувач"
+      "psychologist",
+      "user"
     ]
   },
   email: {
