@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const multerSettings = require('./utils/multer');
+// const socket = require("socket.io");
 
 require('dotenv').config();
 
@@ -15,10 +16,12 @@ app.all('*', multerSettings);
 app.use(express.json());
 
 // Enable CORS
-app.use(cors({
+/*app.use(cors({
   credentials: true,
   origin: 'http://localhost:3000'
-}));
+}));*/
+
+app.use(cors())
 
 
 //Cookie parser
@@ -57,6 +60,13 @@ const port = 5050;
 const server = app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)
 });
+
+// Socket setup
+/*const io = socket(server);
+
+io.on("connection", function (socket) {
+  console.log("Made socket connection");
+});*/
 
 // Handle unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
