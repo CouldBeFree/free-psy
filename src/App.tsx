@@ -5,7 +5,7 @@ import Content from './components/Content/Content';
 import Chat from "./components/Chat/Chat";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./types/rootState";
+import { RootState } from "./types/state/rootState";
 import { fetchAuthMe } from "./redux/authenticationSlcie";
 
 
@@ -14,7 +14,7 @@ const App: FunctionComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAuthMe());
-  }, [])
+  }, []);
   const isAuthenticated = useSelector((state: RootState)  => state.authentication.isAuthenticated);
 
   return (

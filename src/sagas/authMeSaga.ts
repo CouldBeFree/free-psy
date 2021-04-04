@@ -8,7 +8,7 @@ function* fetchAuthMeWorker() {
     const response: AxiosResponse = yield call(authApi.authMe);
     yield put(setCurrentUser(response.data.data));
   } catch (error) {
-    // console.error(error);
+    console.error(error);
   }
 }
 

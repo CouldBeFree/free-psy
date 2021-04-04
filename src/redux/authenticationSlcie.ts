@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AuthenticationStateInterface } from "../types/authenticationState";
-import { FetchRegisterActionInterface } from "../types/fetchRegisterAction";
-import { SetCurrentUserActionInterface } from "../types/setCurrentUserAction";
+import { AuthenticationState } from "../types/state/authenticationState";
+import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
+import { SetCurrentUserAction } from "../types/actions/setCurrentUserAction";
+import { RegisterFailureAction } from "../types/actions/registerFailureAction";
+import { FetchLoginAction } from "../types/actions/fetchLoginAction";
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -9,39 +11,46 @@ const authenticationSlice = createSlice({
     isAuthenticated: null,
     currentUser: null,
     isSubmitting: false,
-    validationErrors: null
+    validationBackendErrors: null
   },
   reducers: {
-    fetchRegister: (state: AuthenticationStateInterface, action: FetchRegisterActionInterface): void => { // eslint-disable-line
+    fetchRegister: (state: AuthenticationState, action: FetchRegisterAction): void => { // eslint-disable-line
       // do nothing
     },
-    register: (state: AuthenticationStateInterface): void => {
+    register: (state: AuthenticationState): void => {
       state.isSubmitting = true;
     },
-    registerSuccess: (state: AuthenticationStateInterface): void => {
+    registerSuccess: (state: AuthenticationState): void => {
+      state.isSubmitting = false;
+      state.isAuthenticated = true;
+      state.validationBackendErrors = null;
+    },
+    registerFailure: (state: AuthenticationState, action: RegisterFailureAction): void => {
+      state.isSubmitting = false;
+      state.isAuthenticated = false;
+      state.validationBackendErrors = action.payload;
+    },
+    clearBackendErrors: (state: AuthenticationState): void => {
+      state.validationBackendErrors = null;
+    },
+    fetchLogin: (state: AuthenticationState, action: FetchLoginAction): void => { // eslint-disable-line
+      // do nothing
+    },
+    login: (state: AuthenticationState): void => {
+      state.isSubmitting = true;
+    },
+    loginSuccess: (state: AuthenticationState): void => {
       state.isSubmitting = false;
       state.isAuthenticated = true;
     },
-    registerFailure: (state: AuthenticationStateInterface): void => {
+    loginFailure: (state: AuthenticationState): void => {
       state.isSubmitting = false;
       state.isAuthenticated = false;
-    },
-    fetchLogin: (state: AuthenticationStateInterface, action: FetchRegisterActionInterface): void => { // eslint-disable-line
-      // do nothing
-    },
-    login: (state: AuthenticationStateInterface): void => {
-      state.isSubmitting = true;
-    },
-    loginSuccess: (state: AuthenticationStateInterface): void => {
-      state.isSubmitting = false;
-    },
-    loginFailure: (state: AuthenticationStateInterface): void => {
-      state.isSubmitting = false;
     },
     fetchAuthMe: (): void => { // eslint-disable-line
       // do nothing
     },
-    setCurrentUser (state: AuthenticationStateInterface, action: SetCurrentUserActionInterface ): void {
+    setCurrentUser (state: AuthenticationState, action: SetCurrentUserAction ): void {
       state.currentUser = action.payload;
       state.isAuthenticated = true;
     }
@@ -50,4 +59,5 @@ const authenticationSlice = createSlice({
 
 export default authenticationSlice.reducer;
 export const { fetchRegister, register, registerSuccess, registerFailure,
-  fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser } = authenticationSlice.actions;
+  fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser,
+  clearBackendErrors } = authenticationSlice.actions;
