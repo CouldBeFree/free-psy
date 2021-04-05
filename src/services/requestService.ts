@@ -17,9 +17,12 @@ export const authApi = {
     return instance.get("api/v1/auth/me");
   },
 
-  login: ( password: string, email: string ): Promise<AxiosResponse> => {
-    console.log(password, email)
+  login: ( email: string,  password: string ): Promise<AxiosResponse> => {  
     return instance.post("api/v1/auth/login", { password, email });
+  },
+
+  logout: (): Promise<AxiosResponse> => {  
+    return instance.get("api/v1/auth/logout");
   }
 }
 

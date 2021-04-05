@@ -7,6 +7,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./types/state/rootState";
 import { fetchAuthMe } from "./redux/authenticationSlcie";
+import Loader from "./components/common/Loader/Loader";
 
 
 const App: FunctionComponent = () => {
@@ -16,27 +17,30 @@ const App: FunctionComponent = () => {
     dispatch(fetchAuthMe());
   }, []);
   const isAuthenticated = useSelector((state: RootState)  => state.authentication.isAuthenticated);
+  const isLoading = useSelector((state: RootState)  => state.authentication.isLoading);
 
   return (
     <>
-      {isAuthenticated ?
-        <>
-          <Redirect to="/chat" />
-          <Route path="/chat" render={() => <Chat />} />
-        </> :
-        <>
-          <Switch>
-            <Redirect from="/chat" to="/authentication" />
-            <Route path="/" render={() =>
-              <>
-                <Header />
-                <Content />
-                <Footer />
-              </>
-            } />
-          </Switch>
-        </>
-      }
+      {isLoading ?
+        <Loader /> :
+        isAuthenticated ?
+          <>
+            <Redirect to="/chat" />
+            <Route path="/chat" render={() => <Chat />} />
+          </> :
+          <>
+            <Switch>
+              <Redirect from="/chat" to="/authentication" />
+              <Route path="/" render={() =>
+                <>
+                  <Header />
+                  <Content />
+                  <Footer />
+                </>
+              } />
+            </Switch>
+          </>
+      }  
     </>
   )
 }

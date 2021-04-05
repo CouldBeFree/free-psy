@@ -9,10 +9,16 @@ const crypto = require('crypto');
 exports.register = asyncHandler(async (req, res, next) => {
   const { name, password, email, userType } = req.body;
 
-  const user = await User.findOne({ email });
+  const userByEmail = await User.findOne({ email });
+  const userByName = await User.findOne({ name });
 
-  if (user) {
-    return next(new errorResponse('User with this email already registered', 401))
+  if (userByEmail) {
+    // return next(new errorResponse('User with this email already registered', 401))
+    return errorAuthResponse(`User with email ${email} already exists`, 401, res)
+  }
+
+  if (userByName) {
+    return errorAuthResponse(`User with name ${name} already exists`, 401, res)
   }
 
   const newUser = await User.create({
@@ -38,17 +44,16 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // Check for user
   const user = await User.findOne({ email }).select('+password');
-  console.log(user)
 
   if(!user){
-    return next(new errorResponse('Invalid credentials', 401))
+    return errorAuthResponse(`No user with ${email}`, 401, res)
   }
 
   const isMatch = await user.matchPassword(password);
 
   if(!isMatch){
-    return next(new errorResponse('Invalid credentials', 401))
-  } 
+    return errorAuthResponse(`Wrong password`, 401, res)
+  }
 
   sendTokenResponse(user, 200, res);
 });
@@ -117,29 +122,6 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
-// Get token from model, create cookie and send response
-const sendTokenResponse = (user, statusCode, res) => {
-  // Create token
-  const token = user.getSignedJwtToken();
-
-  const options = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-    httpOnly: true
-  };
-
-  if(process.env.NODE_ENV === 'production'){
-    options.secure = true
-  }
-
-  res
-    .status(statusCode)
-    .cookie('token', token, options)
-    .json({
-      success: true,
-      token
-    })
-};
-
 // @desc    Reset password
 // @route   PUT /api/v1/reset-password/:resettoken
 // @access  Public
@@ -167,3 +149,36 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 
   sendTokenResponse(user, 200, res);
 });
+
+// Get token from model, create cookie and send response
+const sendTokenResponse = (user, statusCode, res) => {
+  // Create token
+  const token = user.getSignedJwtToken();
+
+  const options = {
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+    httpOnly: true
+  };
+
+  if(process.env.NODE_ENV === 'production'){
+    options.secure = true
+  }
+
+  res
+    .status(statusCode)
+    .cookie('token', token, options)
+    .json({
+      success: true
+    })
+};
+
+// Send error json response
+
+const errorAuthResponse = (msg, statusCode, res) => {
+  res
+    .status(statusCode)
+    .json({
+      success: false,
+      message: msg
+    })
+}

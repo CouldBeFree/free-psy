@@ -4,6 +4,7 @@ import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 import { SetCurrentUserAction } from "../types/actions/setCurrentUserAction";
 import { RegisterFailureAction } from "../types/actions/registerFailureAction";
 import { FetchLoginAction } from "../types/actions/fetchLoginAction";
+import { LoginFailureAction } from "../types/actions/loginFailureAction copy";
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -11,6 +12,7 @@ const authenticationSlice = createSlice({
     isAuthenticated: null,
     currentUser: null,
     isSubmitting: false,
+    isLoading: true,
     validationBackendErrors: null
   },
   reducers: {
@@ -43,16 +45,34 @@ const authenticationSlice = createSlice({
       state.isSubmitting = false;
       state.isAuthenticated = true;
     },
-    loginFailure: (state: AuthenticationState): void => {
+    loginFailure: (state: AuthenticationState, action: LoginFailureAction): void => {
       state.isSubmitting = false;
       state.isAuthenticated = false;
+      state.validationBackendErrors = action.payload;
     },
-    fetchAuthMe: (): void => { // eslint-disable-line
+    fetchAuthMe: (): void => {
       // do nothing
     },
-    setCurrentUser (state: AuthenticationState, action: SetCurrentUserAction ): void {
+    setCurrentUser: (state: AuthenticationState, action: SetCurrentUserAction ): void => {
       state.currentUser = action.payload;
       state.isAuthenticated = true;
+    },
+    disableLoader: (state: AuthenticationState): void => {
+      state.isLoading = false;
+    },
+    fetchLogout: (): void => {
+      // do nothing
+    },
+    logout: (state: AuthenticationState): void => {
+      state.isSubmitting = true;
+    },
+    logoutSuccess: (state: AuthenticationState): void => {
+      state.isSubmitting = false;
+      state.isAuthenticated = false;
+      state.currentUser =  null;
+    },
+    logoutFailure: (state: AuthenticationState): void => {
+      state.isSubmitting = false;
     }
   }
 });
@@ -60,4 +80,5 @@ const authenticationSlice = createSlice({
 export default authenticationSlice.reducer;
 export const { fetchRegister, register, registerSuccess, registerFailure,
   fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser,
-  clearBackendErrors } = authenticationSlice.actions;
+  clearBackendErrors, fetchLogout, logout, logoutSuccess, logoutFailure,
+  disableLoader } = authenticationSlice.actions;

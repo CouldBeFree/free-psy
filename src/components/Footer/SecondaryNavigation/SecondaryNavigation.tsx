@@ -7,7 +7,7 @@ const SecondaryNavigation: FunctionComponent = () => {
   return (
     <div className={style.navigation}>
       <p className={classNames(style.linkBlock, style.contacts)}>
-        <span className={style.link}><a className={style.emailLink} href="mailto:freepsy@ukr.net">Контакти: freepsy@ukr.net</a> </span>
+        <span className={style.link}><a className={style.emailLink} href="mailto:psyfree@ukr.net">Контакти: psyfree@ukr.net</a> </span>
       </p>
       <p className={style.linkBlock}>
         <NavLink to="/" className={style.link}>Для психологів</NavLink>

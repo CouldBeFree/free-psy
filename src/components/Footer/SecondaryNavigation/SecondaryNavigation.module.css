@@ -41,7 +41,7 @@
 }
 
 .navigation .linkBlock:first-child .link:before {
-  content: "Контакти:\00a0 freepsy@ukr.net";
+  content: "Контакти:\00a0 psyfree@ukr.net";
 }
 
 .navigation .linkBlock:nth-child(2) .link:first-child::before {
