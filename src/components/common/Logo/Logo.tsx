@@ -7,7 +7,7 @@ const Logo: FunctionComponent = () => {
     <NavLink to="/" className={style.link}>
       <div className={style.logo}>
         <div className={style.icon}>Ψ</div>
-        <h1 className={style.headline}>FreePsy</h1>
+        <h1 className={style.headline}>PsyFree</h1>
       </div>
     </NavLink>
   )

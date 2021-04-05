@@ -1,15 +1,22 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import Button from '../../../common/Button/Button';
 import { Form, Field } from 'react-final-form';
 import style from '../../Registration/SignUpForm/SignUpForm.module.css';
 import classNames from "classnames";
 import { LoginFormData } from "../../../../types/loginFormData";
-import { useDispatch } from "react-redux";
-import { fetchLogin } from "../../../../redux/authenticationSlcie";
+import { useDispatch, useSelector } from "react-redux";
+import { clearBackendErrors, fetchLogin } from "../../../../redux/authenticationSlcie";
+import { RootState } from "../../../../types/state/rootState";
 
 const SignInForm: FunctionComponent = () => {
 
   const dispatch = useDispatch();
+  const backendError = useSelector((state: RootState)  => state.authentication.validationBackendErrors);
+  useEffect(() => {
+    return () => {
+      dispatch(clearBackendErrors());
+    }
+  }, []);
 
   const onSubmit = (formData: LoginFormData) => {
     dispatch(fetchLogin(formData));
@@ -40,10 +47,10 @@ const SignInForm: FunctionComponent = () => {
           )}
         </Field>
         <div className={style.checkboxBlock}>
-          <Field name="rememberMe" id="rememberMe" component="input" type="checkbox" />
+          <Field name="rememberMe" id="rememberMe" component="input" type="checkbox"/>
           <label htmlFor="rememberMe" className={classNames(style.subtitile, style.checkboxLabel)}>Запам’ятати мене</label>
         </div>
-        {/* <p className={style.backendError}>{backendError ? backendError : ""}</p> */}
+        <p className={style.backendError}>{backendError ? backendError : "\xA0"}</p>
         <Button>Увійти</Button>
       </form>
     )} />

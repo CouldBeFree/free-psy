@@ -1,4 +1,13 @@
-.chatNavigationBlock {
+.chatNavigation {
+  padding-top: 25px;
   grid-area: n;
   background: linear-gradient(var(--primary-translucent), var(--primary-light));
+}
+
+.iconBlock {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }

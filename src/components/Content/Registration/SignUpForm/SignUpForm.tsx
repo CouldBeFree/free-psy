@@ -20,7 +20,6 @@ const SignUpForm: FunctionComponent = () => {
     }
   }, []);
   const onSubmit = async (formData: RegisterFormDataInteface) => {
-    console.log(formData)
     dispatch(fetchRegister(formData));
   }
 

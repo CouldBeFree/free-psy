@@ -7,13 +7,13 @@ import { FetchLoginAction } from "../types/actions/fetchLoginAction";
 function* fetchLoginWorker({payload}: FetchLoginAction) {
   try {
     yield put(login());
-    const response: AxiosResponse = yield call(authApi.login, payload.email, payload.password);
+    yield call(authApi.login, payload.email, payload.password);
+    const response: AxiosResponse = yield call(authApi.authMe);
     yield put(setCurrentUser(response.data.data));
     yield put(loginSuccess());
   } catch (error) {
-    console.dir(error);
-    // const errorMessage: string = error.response.data.toString().split("Error: ")[1].split("<br>")[0];
-    yield put(loginFailure());
+    const errorMessage = "Логін чи пароль введені невірно";
+    yield put(loginFailure(errorMessage));
   }
 }
 

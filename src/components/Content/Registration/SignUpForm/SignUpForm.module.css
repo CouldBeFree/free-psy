@@ -70,7 +70,7 @@
 .checkboxBlock {
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  margin: 15px 0 0 0;
 }
 
 .checkboxLabel {
@@ -79,12 +79,16 @@
 }
 
 .backendError {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   align-self: center;
   margin: 0;
   font-size: 1rem;
-  text-align: center;
   color: #DF000C;
   width: 340px;
+  text-align: center;
 }
 
 @media screen and (max-width: 900px) {
