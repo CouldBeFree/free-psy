@@ -16,12 +16,12 @@ app.all('*', multerSettings);
 app.use(express.json());
 
 // Enable CORS
-/*app.use(cors({
+app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'
-}));*/
+  origin: 'http://localhost:8080'
+}));
 
-app.use(cors())
+// app.use(cors())
 
 
 //Cookie parser
@@ -62,11 +62,30 @@ const server = app.listen(port, () => {
 });
 
 // Socket setup
-/*const io = socket(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: 'http://localhost:8080',
+    methods: ['GET', 'POST']
+  }
+});
 
-io.on("connection", function (socket) {
-  console.log("Made socket connection");
-});*/
+io.on("connection", async function (socket) {
+  socket.broadcast.emit("user-connected", socket.id);
+
+  socket.on('user', async (user) => {
+    console.log(`Connected user ${user.name}`)
+    console.log(socket.rooms)
+  })
+
+  setTimeout(() => {
+    socket.emit('customEmit', { message: 'Hello from socket!' })
+  }, 5000)
+
+  socket.on('disconnect',  async (reason) => {
+    console.log(reason)
+    // console.log(`User ${user.name} disconnected`)
+  })
+});
 
 // Handle unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
