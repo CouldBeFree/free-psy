@@ -32,7 +32,7 @@
   /* chat page*/
   --primary-translucent: rgba(var(--primary-variable), .67);
   --primary-light: rgba(var(--primary-variable), .27);
-  --tertiary-light: rgba(var(--tertiary), .27);
+  --tertiary-light: rgba(var(--tertiary-variable), .27);
 }
 
 body {

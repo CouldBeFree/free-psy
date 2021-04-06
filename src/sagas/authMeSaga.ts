@@ -1,14 +1,15 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { authApi } from "../services/requestService";
-import { fetchAuthMe, setCurrentUser } from "../redux/authenticationSlcie";
+import { disableLoader, fetchAuthMe, setCurrentUser } from "../redux/authenticationSlcie";
 import { AxiosResponse } from "axios";
 
 function* fetchAuthMeWorker() {
   try {
     const response: AxiosResponse = yield call(authApi.authMe);
     yield put(setCurrentUser(response.data.data));
+    yield put(disableLoader());
   } catch (error) {
-    console.error(error);
+    yield put(disableLoader());
   }
 }
 

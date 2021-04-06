@@ -1,6 +1,7 @@
-import 
-
 .chatHeaderBlock {
   grid-area: h;
-  background: linear-gradient();
+  background: linear-gradient(to right, var(--primary-translucent), var(--tertiary-light));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
