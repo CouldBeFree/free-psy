@@ -18,11 +18,10 @@ app.use(express.json());
 // Enable CORS
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:8080'
 }));
 
 // app.use(cors())
-
 
 //Cookie parser
 app.use(cookieParser());
@@ -69,21 +68,45 @@ const io = require('socket.io')(server, {
   }
 });
 
+const sessionsMap = [];
+
 io.on("connection", async function (socket) {
-  socket.broadcast.emit("user-connected", socket.id);
+  console.info('socket connected', socket.id)
 
   socket.on('user', async (user) => {
-    console.log(`Connected user ${user.name}`)
-    console.log(socket.rooms)
+    if (user) {
+      sessionsMap.push({
+        socketId: socket.id,
+        name: user.name
+      })
+    }
+    sessionsMap.forEach(el => {
+      console.log(`name ${el.name} id ${el.socketId}`)
+    })
+    console.info('length', sessionsMap.length)
   })
 
-  setTimeout(() => {
-    socket.emit('customEmit', { message: 'Hello from socket!' })
-  }, 5000)
+  socket.on('message', async (msg) => {
+    const targetSocket = sessionsMap.find(socket => socket.name === msg.to)
+    const fromSocket = sessionsMap.find(ses => ses.socketId === socket.id)
+    if (targetSocket && targetSocket.socketId && fromSocket) {
+      io.to(targetSocket.socketId).emit('messageResponse', {
+        message: msg.message,
+        from: fromSocket.name
+      });
+    }
+  })
 
-  socket.on('disconnect',  async (reason) => {
-    console.log(reason)
-    // console.log(`User ${user.name} disconnected`)
+  socket.on('typing', async(name) => {
+    socket.broadcast.emit('userTyping', name)
+  })
+
+  socket.on('disconnect',  async () => {
+    const index = sessionsMap.findIndex(el => el.socketId === socket.id)
+    if (sessionsMap[index]) {
+      console.log(`user ${sessionsMap[index].name} left the chat`)
+      sessionsMap.splice(index, 1)
+    }
   })
 });
 
