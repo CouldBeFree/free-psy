@@ -68,47 +68,7 @@ const io = require('socket.io')(server, {
   }
 });
 
-const sessionsMap = [];
-
-io.on("connection", async function (socket) {
-  console.info('socket connected', socket.id)
-
-  socket.on('user', async (user) => {
-    if (user) {
-      sessionsMap.push({
-        socketId: socket.id,
-        name: user.name
-      })
-    }
-    sessionsMap.forEach(el => {
-      console.log(`name ${el.name} id ${el.socketId}`)
-    })
-    console.info('length', sessionsMap.length)
-  })
-
-  socket.on('message', async (msg) => {
-    const targetSocket = sessionsMap.find(socket => socket.name === msg.to)
-    const fromSocket = sessionsMap.find(ses => ses.socketId === socket.id)
-    if (targetSocket && targetSocket.socketId && fromSocket) {
-      io.to(targetSocket.socketId).emit('messageResponse', {
-        message: msg.message,
-        from: fromSocket.name
-      });
-    }
-  })
-
-  socket.on('typing', async(name) => {
-    socket.broadcast.emit('userTyping', name)
-  })
-
-  socket.on('disconnect',  async () => {
-    const index = sessionsMap.findIndex(el => el.socketId === socket.id)
-    if (sessionsMap[index]) {
-      console.log(`user ${sessionsMap[index].name} left the chat`)
-      sessionsMap.splice(index, 1)
-    }
-  })
-});
+require('./utils/socket')(io)
 
 // Handle unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
