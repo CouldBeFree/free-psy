@@ -41,12 +41,11 @@ exports.getUsers = asyncHandler(async (req, res) => {
 exports.getMessages = asyncHandler(async(req, res) => {
   const messages = await Message.find( {
     $or: [
-      { from: { $eq: req.query.user } },
-      { to: { $eq: req.user.name } },
-      { from: { $eq: req.user.name } },
-      { to: { $eq: req.query.user } }
+      { from: { $eq: req.query.user }, to: { $eq: req.user.name } },
+      { from: { $eq: req.user.name }, to: { $eq: req.query.user } }
     ]
   })
+    .sort({time: 'ascending'})
 
   res.status(200).json({
     success: true,

@@ -45,6 +45,7 @@ module.exports = function (io) {
       if (sessionsMap[index]) {
         console.log(`user ${sessionsMap[index].name} left the chat`)
         sessionsMap.splice(index, 1)
+        console.info('length', sessionsMap.length)
       }
     })
   });
