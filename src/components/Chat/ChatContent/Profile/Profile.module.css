@@ -1,0 +1,46 @@
+.profile {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) 2.5fr;
+  color: var(--primary-darker);
+}
+
+.primaryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primary-light);
+  padding: 15px;
+}
+
+.name {
+  margin: 0;
+  text-align: start;
+	font-family: 'Montserrat Medium';
+  font-size: 1.5rem;
+  align-self: flex-start;
+  margin-bottom: 15px;
+}
+
+.status {
+  margin: 0;
+  align-self: flex-start;
+	font-family: 'Montserrat Light';
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 100%;
+  padding: 5px;
+  background-color: var(--blank);
+  border-radius: 3px;
+  border: 1px solid var(--tertiary-light);
+  box-shadow: 0 0 10px 0 #517361;
+}
+
+.secondaryInfo {
+  background-color: var(--tertiary-light);
+  display: flex;
+  flex-direction: column;
+}

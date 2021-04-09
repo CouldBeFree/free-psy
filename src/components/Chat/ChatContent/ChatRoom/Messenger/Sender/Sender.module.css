@@ -1,0 +1,55 @@
+.formBlock {
+  padding: 0 25px;
+  margin: 25px 0 15px 0;
+}
+
+.inputBlock  {
+  display: flex;
+  height: 75px;
+  position: relative;
+}
+
+.label  {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 75px;
+  cursor: pointer;
+}
+
+.icon {
+  transition: all .2s;
+}
+
+.label:hover .icon {
+  transform: scale(1.05);
+  transition: all .2s;
+}
+
+.button {
+  right: 0;
+  border: none;
+  background-color: transparent;
+  border-left: 1px solid var(--tertiary-light);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.field {
+  padding: 0 75px;
+  height: 100%;
+  width: calc(100% - 150px);
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+}
+
+.field:focus {
+  outline: none;
+  border: none;
+}

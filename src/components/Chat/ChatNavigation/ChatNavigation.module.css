@@ -11,3 +11,22 @@
   align-items: center;
   justify-content: center;
 }
+
+.icon {
+  display: inline-flex;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon:hover {
+  transform: scale(1.05);
+  transition: all .3s;
+  background-color: var(--blank-light);
+}
+
+.active {
+  background-color: var(--tertiary-semitransparent);
+  pointer-events: none;
+}

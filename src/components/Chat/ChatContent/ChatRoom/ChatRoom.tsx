@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import UserList from "./UserList/UserList";
+import Respondents from "./Respondents/Respondents";
 import Messenger from "./Messenger/Messenger";
 import style from "./ChatRoom.module.css";
 
 const ChatRoom: FunctionComponent = () => {
   return (
     <div className={style.chatRoom}>
-      <UserList />
+      <Respondents />
       <Messenger />
     </div>
   )
