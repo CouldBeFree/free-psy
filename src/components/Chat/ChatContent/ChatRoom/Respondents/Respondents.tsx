@@ -6,7 +6,7 @@ import style from "./Respondents.module.css";
 const Respondents: FunctionComponent = () => {
   return (
     <div className={style.respondents}>
-      <Searcher />
+      <Searcher placeholder="введіть текст" headline="Пошук повідомлення"/>
       <div className={style.respondentList}>
         <Respondent />
         <Respondent />

@@ -6,7 +6,7 @@ import { required, minLength, maxLength, repeatPassword, composeValidators } fro
 import { passwordPattern, emailPattern } from '../../../../services/validatorService';
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { clearBackendErrors, fetchRegister } from "../../../../redux/authenticationSlcie";
+import { clearBackendErrors, fetchRegister } from "../../../../redux/authenticationSlice";
 import { RegisterFormDataInteface } from "../../../../types/registerFormData";
 import { RootState } from "../../../../types/state/rootState";
 

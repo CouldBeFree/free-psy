@@ -6,7 +6,7 @@ import style from "./Users.module.css";
 const Users: FunctionComponent = () => {
   return (
     <div className={style.usersBlock}>
-      <Searcher />
+      <Searcher headline="Пошук користувача" placeholder="введіть ім'я чи псевдонім"/>
       <UserList />
     </div>
   )

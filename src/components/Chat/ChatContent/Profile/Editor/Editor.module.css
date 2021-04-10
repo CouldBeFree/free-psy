@@ -1,0 +1,8 @@
+.editor {
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.editor:hover {
+  transform: scale(1.15);
+}

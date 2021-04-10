@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { authApi } from "../services/requestService";
-import { disableLoader, fetchAuthMe, setCurrentUser } from "../redux/authenticationSlcie";
+import { disableLoader, fetchAuthMe, setCurrentUser } from "../redux/authenticationSlice";
 import { AxiosResponse } from "axios";
 
 function* fetchAuthMeWorker() {

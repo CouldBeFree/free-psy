@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { authApi } from "../services/requestService";
-import { fetchLogout, logout, logoutFailure, logoutSuccess } from "../redux/authenticationSlcie";
+import { fetchLogout, logout, logoutFailure, logoutSuccess } from "../redux/authenticationSlice";
 
 function* fetchLogoutWorker() {
   try {

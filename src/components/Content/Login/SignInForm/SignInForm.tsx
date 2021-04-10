@@ -5,7 +5,7 @@ import style from '../../Registration/SignUpForm/SignUpForm.module.css';
 import classNames from "classnames";
 import { LoginFormData } from "../../../../types/loginFormData";
 import { useDispatch, useSelector } from "react-redux";
-import { clearBackendErrors, fetchLogin } from "../../../../redux/authenticationSlcie";
+import { clearBackendErrors, fetchLogin } from "../../../../redux/authenticationSlice";
 import { RootState } from "../../../../types/state/rootState";
 
 const SignInForm: FunctionComponent = () => {
