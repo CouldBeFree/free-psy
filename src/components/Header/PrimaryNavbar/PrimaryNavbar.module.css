@@ -64,6 +64,7 @@
   line-height: 27px;
 	font-family: 'Montserrat Medium';
   cursor: pointer;
+  color: var(--secondary);
 }
 
 .link:active {

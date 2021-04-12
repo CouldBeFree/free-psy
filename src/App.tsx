@@ -6,7 +6,7 @@ import Chat from "./components/Chat/Chat";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./types/state/rootState";
-import { fetchAuthMe } from "./redux/authenticationSlcie";
+import { fetchAuthMe } from "./redux/authenticationSlice";
 import Loader from "./components/common/Loader/Loader";
 
 

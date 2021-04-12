@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { authApi } from "../services/requestService";
-import { fetchLogin, login, loginFailure, loginSuccess, setCurrentUser } from "../redux/authenticationSlcie";
+import { fetchLogin, login, loginFailure, loginSuccess, setCurrentUser } from "../redux/authenticationSlice";
 import { AxiosResponse } from "axios";
 import { FetchLoginAction } from "../types/actions/fetchLoginAction";
 

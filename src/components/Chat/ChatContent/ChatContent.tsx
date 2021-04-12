@@ -3,14 +3,14 @@ import { Route } from "react-router-dom";
 import style from "./ChatContent.module.css";
 import ChatRoom from "./ChatRoom/ChatRoom";
 import Profile from "./Profile/Profile";
-import Searcher from "./Searcher/Searcher";
+import Users from "./Users/Users";
 
 const ChatContent: FunctionComponent = () => {
   return (
     <div className={style.chatContentBlock}>
       <Route exact path="/chat" render={() => <ChatRoom />} />
-      <Route path="/chat/search" render={() => <Profile />} />
-      <Route path="/chat/profile" render={() => <Searcher />} />
+      <Route path="/chat/users" render={() => <Users />} />
+      <Route path="/chat/profile" render={() => <Profile />} />
     </div>
   )
 }

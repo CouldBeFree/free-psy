@@ -1,0 +1,17 @@
+.userList {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: calc(100%);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.scrollBlock {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 25px 0;
+  width: 100%;
+  overflow-y: overlay;
+}

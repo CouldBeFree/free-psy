@@ -10,11 +10,11 @@ const SecondaryNavigation: FunctionComponent = () => {
         <span className={style.link}><a className={style.emailLink} href="mailto:psyfree@ukr.net">Контакти: psyfree@ukr.net</a> </span>
       </p>
       <p className={style.linkBlock}>
-        <NavLink to="/" className={style.link}>Для психологів</NavLink>
-        <NavLink to="/" className={style.link}>Для клієнта</NavLink>
+        <NavLink to="/psychologist" className={style.link}>Для психологів</NavLink>
+        <NavLink to="/client" className={style.link}>Для клієнтів</NavLink>
       </p>
       <p className={style.linkBlock}>
-        <NavLink to="/regitration" className={style.link}>Реєстрація</NavLink>
+        <NavLink to="/registration" className={style.link}>Реєстрація</NavLink>
         <NavLink to="/authentication" className={style.link}>Увійти</NavLink>
       </p>
       <p className={style.linkBlock}>

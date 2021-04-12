@@ -1,4 +1,14 @@
 @font-face {
+	font-family: 'Montserrat Thin';
+	src: url('./assets/fonts/Montserrat-Thin.ttf');
+}
+
+@font-face {
+	font-family: 'Montserrat Light';
+	src: url('./assets/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
 	font-family: 'Montserrat Regular';
 	src: url('./assets/fonts/Montserrat-Regular.ttf');
 }
@@ -23,16 +33,21 @@
   --primary-variable: 164, 200, 131; /* A4C883 */
   --primary: rgb(var(--primary-variable));
   --primary-darker: #517361;
-  --secondary: #614885;
+  --secondary-variable: 97, 72, 133;
+  --secondary: rgb(var(--secondary-variable));
   --tertiary-variable: 223, 210, 146; /* DFD292 */
   --tertiary: rgb(var(--tertiary-variable));
   --tertiary-translucent: rgba(var(--tertiary-variable), .86);
   --tertiary-semitransparent: rgba(var(--tertiary-variable), .55);
-  --blank: #FFF;
+  --blank-variable: 255, 255, 255;
+  --blank: rgb(var(--blank-variable));
+  --blank-light: rgba(var(--blank-variable), .27);
   /* chat page*/
   --primary-translucent: rgba(var(--primary-variable), .67);
   --primary-light: rgba(var(--primary-variable), .27);
   --tertiary-light: rgba(var(--tertiary-variable), .27);
+  --secondary-semitransparent: rgba(var(--secondary-variable), .55);
+
 }
 
 body {

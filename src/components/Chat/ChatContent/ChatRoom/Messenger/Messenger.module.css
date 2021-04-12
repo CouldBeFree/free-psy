@@ -1,3 +1,45 @@
 .messengerBlock {
   background-color: var(--tertiary-light);
+  display: flex;
+  flex-direction: column;
+  overflow: overlay;
+  justify-content: space-between;
+}
+
+.correspondence {
+  overflow: overlay;
+}
+
+.respondentenInfo {
+  width: 100%;
+  min-height: 136px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  border-bottom: 2px solid var(--primary-light);
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  min-height: 110px;
+  min-width: 110px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+}
+
+.info {
+  margin-left: 15px;
+}
+
+.name {
+  font-family: 'Montserrat Medium';
+  color: var(--primary-darker);
+  font-size: 1.6rem;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.status {
+  margin: 0;
+  font-family: 'Montserrat Thin';
 }

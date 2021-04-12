@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { authApi } from "../services/requestService";
-import { fetchRegister, register, registerFailure, registerSuccess, setCurrentUser } from "../redux/authenticationSlcie";
+import { fetchRegister, register, registerFailure, registerSuccess, setCurrentUser } from "../redux/authenticationSlice";
 import { AxiosResponse } from "axios";
 import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 
@@ -21,6 +21,8 @@ function* fetchRegisterWorker({payload}: FetchRegisterAction) {
       errorMessage = "Користувач з цією електронною поштою вже зареєстровний";
     } else if (errorMessage.includes("User with name")) {
       errorMessage = "Користувач з цим псевдонімом вже зареєстровний";
+    } else {
+      errorMessage = "Щось пішло не так, зверніться в техпідтримку";
     }
     yield put(registerFailure(errorMessage));
   }

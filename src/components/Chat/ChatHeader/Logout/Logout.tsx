@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLogout } from "../../../../redux/authenticationSlcie";
+import { fetchLogout } from "../../../../redux/authenticationSlice";
 import { RootState } from "../../../../types/state/rootState";
 import style from './Logout.module.css';
 

@@ -24,8 +24,8 @@ const Navbar: FunctionComponent = () => {
       </div>
       <div className={style.navbar}>
         <NavLink onClick={onChengeURL} exact to="/" className={style.link} activeClassName={style.active}>Головна</NavLink>
-        <NavLink onClick={onChengeURL} exact to="/psychologist" className={style.link} activeClassName={style.active}>Для психологів</NavLink>
-        <NavLink onClick={onChengeURL} exact to="/client" className={style.link} activeClassName={style.active}>Для клієнтів</NavLink>
+        <NavLink onClick={onChengeURL} to="/psychologist" className={style.link} activeClassName={style.active}>Для психологів</NavLink>
+        <NavLink onClick={onChengeURL} to="/client" className={style.link} activeClassName={style.active}>Для клієнтів</NavLink>
         <NavLink onClick={onChengeURL} to="/registration" className={style.link} activeClassName={style.active}>Реєстрація</NavLink>
         <NavLink onClick={onChengeURL} to="/authentication" className={style.link} activeClassName={style.active}>Увійти</NavLink>
       </div>
