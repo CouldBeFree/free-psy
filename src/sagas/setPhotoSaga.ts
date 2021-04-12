@@ -1,16 +1,15 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import {  profileApi } from "../services/requestService";
-import { fetchSetPhoto, setPhoto, setPhotoFailure, setPhotoSuccess } from "../redux/profileSlice";
+import { fetchSetPhoto, setPhoto, setPhotoFailure, setPhotoSuccess } from "../redux/authenticationSlice";
+import { FetchSetPhotoAction } from "../types/actions/fetchSetPhotoAction";
 
-function* fetchSetPhotoWorker({payload}: any) {
-  console.log(payload)
+function* fetchSetPhotoWorker({payload: { file, id }}: FetchSetPhotoAction) {
   try {
     yield put(setPhoto());
-    yield call(profileApi.setPhoto, payload.file[0], payload.id);
+    yield call(profileApi.setPhoto, file, id);
     yield put(setPhotoSuccess());
   } catch (error) {
-    // const errorMessage: string = error.response.data.message;
-    // yield put(setPhotoFailure(errorMessage));
+    yield put(setPhotoFailure("щось пішло не так"));
   }
 }
 

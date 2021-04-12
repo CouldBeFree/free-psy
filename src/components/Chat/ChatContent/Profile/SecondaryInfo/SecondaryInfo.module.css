@@ -1,0 +1,48 @@
+.secondaryInfo {
+  background-color: var(--tertiary-light);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  overflow: overlay;
+}
+
+.button {
+  display: flex;
+  position: relative;
+  padding: 5px 10px;
+  background-color: var(--primary-light);
+  color: var(--primary-darker);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.shadow {
+  box-shadow: 0 4px 0 0 var(--primary-translucent);
+  transition: all .2s;
+}
+
+.shadow:hover {
+  box-shadow: 0 3px 0 0 var(--primary-translucent);
+  transition: all .2s;
+}
+
+.shadow:active {
+  box-shadow: 0 2px 0 0 var(--primary-translucent);
+  transition: all .2s;
+}
+
+.buttonText {
+  display: inline-flex;
+  align-self: center;
+  justify-content: center;
+  margin-left: 5px;
+  line-height: 18px;
+  font-size: 18px;
+}
+
+.editor {
+  align-self: flex-end;
+}

@@ -27,10 +27,10 @@ export const authApi = {
 }
 
 export const profileApi = {
-  setPhoto: (file: File, id: string) => {
+  setPhoto: (file: File, id: string): Promise<AxiosResponse> => {
     const formData = new FormData();
     formData.append('thumb', file);
-    return instance.put(`/api/v1/users/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+    return instance.put(`/api/v1/us2ers/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
   }
 }
 

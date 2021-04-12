@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AuthenticationState } from "../types/state/authenticationState";
 import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 import { SetCurrentUserAction } from "../types/actions/setCurrentUserAction";
-import { RegisterFailureAction } from "../types/actions/registerFailureAction";
 import { FetchLoginAction } from "../types/actions/fetchLoginAction";
-import { LoginFailureAction } from "../types/actions/loginFailureAction copy";
+import { FailureAction } from "../types/actions/failureAction";
+import { FetchSetPhotoAction } from "../types/actions/fetchSetPhotoAction";
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -27,7 +27,7 @@ const authenticationSlice = createSlice({
       state.isAuthenticated = true;
       state.validationBackendErrors = null;
     },
-    registerFailure: (state: AuthenticationState, action: RegisterFailureAction): void => {
+    registerFailure: (state: AuthenticationState, action: FailureAction): void => {
       state.isSubmitting = false;
       state.isAuthenticated = false;
       state.validationBackendErrors = action.payload;
@@ -45,7 +45,7 @@ const authenticationSlice = createSlice({
       state.isSubmitting = false;
       state.isAuthenticated = true;
     },
-    loginFailure: (state: AuthenticationState, action: LoginFailureAction): void => {
+    loginFailure: (state: AuthenticationState, action: FailureAction): void => {
       state.isSubmitting = false;
       state.isAuthenticated = false;
       state.validationBackendErrors = action.payload;
@@ -73,7 +73,20 @@ const authenticationSlice = createSlice({
     },
     logoutFailure: (state: AuthenticationState): void => {
       state.isSubmitting = false;
-    }
+    },
+    fetchSetPhoto: (state: AuthenticationState, action: FetchSetPhotoAction): void => { // eslint-disable-line
+      // do nothing
+    },
+    setPhoto: (state: AuthenticationState): void => {
+      state.isSubmitting = true;
+    },
+    setPhotoSuccess: (state: AuthenticationState): void => {
+      state.isSubmitting = false;
+    },
+    setPhotoFailure: (state: AuthenticationState, action: FailureAction): void => {
+      state.validationBackendErrors = action.payload;
+      state.isSubmitting = false;
+    },
   }
 });
 
@@ -81,4 +94,5 @@ export default authenticationSlice.reducer;
 export const { fetchRegister, register, registerSuccess, registerFailure,
   fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser,
   clearBackendErrors, fetchLogout, logout, logoutSuccess, logoutFailure,
-  disableLoader } = authenticationSlice.actions;
+  disableLoader, fetchSetPhoto, setPhoto, setPhotoSuccess, setPhotoFailure
+} = authenticationSlice.actions;

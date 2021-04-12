@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import style from "./Sender.module.css";
-import { Field, Form, FormRenderProps } from "react-final-form"
+import { Field, Form } from "react-final-form"
 import classNames from "classnames";
 
 const Sender: FunctionComponent = () => {
 
-  const onMessageSend = (formData: any): void => {
+  const onMessageSend = (formData: string): void => {
     console.log(formData)
     // do nothing
   }
