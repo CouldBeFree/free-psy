@@ -6,9 +6,11 @@ const asyncHandler = require('../middleware/async');
 // @route   PUT /api/v1/users/:id
 // @access  Private
 exports.updateUser = asyncHandler(async (req, res, next) => {
-  const files = req.files['thumb'];
+  let files = null;
 
-  if(files.length) {
+  if (req.files && req.files['thumb']) files = req.files['thumb']
+
+  if(files && files.length) {
     req.body.photo = files[0].path
   }
 
