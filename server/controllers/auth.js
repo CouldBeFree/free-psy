@@ -46,13 +46,13 @@ exports.login = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email }).select('+password');
 
   if(!user){
-    return errorAuthResponse(`No user with ${email}`, 401, res)
+    return errorAuthResponse('Wrong credentials', 401, res)
   }
 
   const isMatch = await user.matchPassword(password);
 
   if(!isMatch){
-    return errorAuthResponse(`Wrong password`, 401, res)
+    return errorAuthResponse('Wrong credentials', 401, res)
   }
 
   sendTokenResponse(user, 200, res);
