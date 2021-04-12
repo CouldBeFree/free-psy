@@ -1,20 +1,26 @@
 import React, { ChangeEventHandler, FunctionComponent } from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../types/state/rootState";
 import style from "./Profile.module.css";
 import photoExample from "../../../../assets/images/example.webp";
 import { dateConverter } from "../../../../services/dateConverterService";
 import classNames from "classnames";
 import Editor from "./Editor/Editor";
+import { fetchSetPhoto } from "../../../../redux/profileSlice";
 const Profile: FunctionComponent = () => {
 
   const name = useSelector((state: RootState)  => state.authentication.currentUser?.name);
+  const id = useSelector((state: RootState)  => state.authentication.currentUser?._id);
+  const dispatch = useDispatch();
   const createdAt = dateConverter();
   const isOwner = true;
 
   const onPhotoSelected: ChangeEventHandler<HTMLInputElement> = (e) => {
     if (e.target.files!.length) {
-        console.log(e);
+      dispatch(fetchSetPhoto({
+        file: e.target.files,
+        id
+      }));
     }
   }
 
@@ -44,23 +50,18 @@ const Profile: FunctionComponent = () => {
           <p className={style.infoLine}><span className={style.typeInfo}>Прізвище:</span> {name?.split(" ")[0]}</p>
         </div>
         <div className={style.infoBlock}>
-          <Editor />
           <p className={style.infoLine}><span className={style.typeInfo}>Освіта:</span> інформація відсутня</p>
         </div>
         <div className={style.infoBlock}>
-          <Editor />
           <p className={style.infoLine}><span className={style.typeInfo}>Напрям психотерапії:</span> інформація відсутня</p>
         </div>
         <div className={style.infoBlock}>
-          <Editor />
           <p className={style.infoLine}><span className={style.typeInfo}>Працюю з:</span> інформація відсутня</p>
         </div>
         <div className={style.infoBlock}>
-          <Editor />
           <p className={style.infoLine}><span className={style.typeInfo}>Про себе:</span> інформація відсутня</p>
         </div>
         <div className={style.infoBlock}>
-          <Editor />
           <p className={style.infoLine}><span className={style.typeInfo}>Контакти:</span> інформація відсутня</p>
         </div>
       </div>

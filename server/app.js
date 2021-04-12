@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const multerSettings = require('./utils/multer');
+// app.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 // const socket = require("socket.io");
 
 require('dotenv').config();

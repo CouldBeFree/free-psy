@@ -6,7 +6,7 @@ import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 
 function* fetchRegisterWorker({payload}: FetchRegisterAction) {
   try {
-    yield put(register())
+    yield put(register());
     // If it is Psychologist return full name, else return nickname
     const userName =  payload.isPsychologist ? `${payload.lastName} ${payload.firstName}` : `${payload.nickName}`;
     const userType =  payload.isPsychologist ? "psychologist" : "user";
