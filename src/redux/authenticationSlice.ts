@@ -5,6 +5,7 @@ import { SetCurrentUserAction } from "../types/actions/setCurrentUserAction";
 import { FetchLoginAction } from "../types/actions/fetchLoginAction";
 import { FailureAction } from "../types/actions/failureAction";
 import { FetchSetPhotoAction } from "../types/actions/fetchSetPhotoAction";
+import { FetchSetInfoAction } from "../types/actions/fetchSetInfoAction";
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -80,10 +81,25 @@ const authenticationSlice = createSlice({
     setPhoto: (state: AuthenticationState): void => {
       state.isSubmitting = true;
     },
-    setPhotoSuccess: (state: AuthenticationState): void => {
+    setPhotoSuccess: (state: AuthenticationState, action: SetCurrentUserAction): void => {
       state.isSubmitting = false;
+      state.currentUser = action.payload;
     },
     setPhotoFailure: (state: AuthenticationState, action: FailureAction): void => {
+      state.validationBackendErrors = action.payload;
+      state.isSubmitting = false;
+    },
+    fetchSetInfo: (state: AuthenticationState, action: FetchSetInfoAction): void => { // eslint-disable-line
+      // do nothing
+    },
+    setInfo: (state: AuthenticationState): void => {
+      state.isSubmitting = true;
+    },
+    setInfoSuccess: (state: AuthenticationState, action: SetCurrentUserAction): void => {
+      state.isSubmitting = false;
+      state.currentUser = action.payload;
+    },
+    setInfoFailure: (state: AuthenticationState, action: FailureAction): void => {
       state.validationBackendErrors = action.payload;
       state.isSubmitting = false;
     },
@@ -94,5 +110,5 @@ export default authenticationSlice.reducer;
 export const { fetchRegister, register, registerSuccess, registerFailure,
   fetchLogin, login, loginSuccess, loginFailure, fetchAuthMe, setCurrentUser,
   clearBackendErrors, fetchLogout, logout, logoutSuccess, logoutFailure,
-  disableLoader, fetchSetPhoto, setPhoto, setPhotoSuccess, setPhotoFailure
-} = authenticationSlice.actions;
+  disableLoader, fetchSetPhoto, setPhoto, setPhotoSuccess, setPhotoFailure,
+  fetchSetInfo, setInfo, setInfoSuccess, setInfoFailure } = authenticationSlice.actions;

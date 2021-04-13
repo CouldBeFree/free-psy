@@ -6,7 +6,6 @@ import classNames from "classnames";
 const Sender: FunctionComponent = () => {
 
   const onMessageSend = (formData: string): void => {
-    console.log(formData)
     // do nothing
   }
 

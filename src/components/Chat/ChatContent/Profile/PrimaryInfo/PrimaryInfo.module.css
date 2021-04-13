@@ -39,11 +39,10 @@
   border-bottom: 2px solid var(--primary-light);
 }
 
-.scale:hover {
-  transform: scale(1.01);
-  transition: all .05s;
-}
-
 .uploadButton {
   display: none;
+}
+
+.disabled {
+  pointer-events: none;
 }

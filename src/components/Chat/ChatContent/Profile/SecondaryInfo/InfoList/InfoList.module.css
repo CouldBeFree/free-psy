@@ -17,9 +17,17 @@
 }
 
 .infoLine {
+  display: flex;
   margin: 15px 0 15px 30px;
+  word-break: break-word;
 }
 
 .typeInfo {
+  word-break: normal;
+  white-space: nowrap;
 	font-family: 'Montserrat Medium';
+  margin-right: 5px;
+}
+
+.info {
 }

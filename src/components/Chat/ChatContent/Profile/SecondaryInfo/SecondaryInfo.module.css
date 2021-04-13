@@ -17,19 +17,20 @@
   outline: none;
   cursor: pointer;
   margin: 0;
-}
-
-.shadow {
   box-shadow: 0 4px 0 0 var(--primary-translucent);
   transition: all .2s;
 }
 
-.shadow:hover {
+.flexEnd {
+  align-self: flex-end;
+}
+
+.button:hover {
   box-shadow: 0 3px 0 0 var(--primary-translucent);
   transition: all .2s;
 }
 
-.shadow:active {
+.button:active {
   box-shadow: 0 2px 0 0 var(--primary-translucent);
   transition: all .2s;
 }
@@ -41,8 +42,4 @@
   margin-left: 5px;
   line-height: 18px;
   font-size: 18px;
-}
-
-.editor {
-  align-self: flex-end;
 }

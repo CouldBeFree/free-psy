@@ -12,7 +12,6 @@ const SecondaryInfo: FunctionComponent = () => {
       {editMode ? 
         <InfoListForm setEditMode={setEditMode} editMode={editMode}/> :
         <InfoList  setEditMode={setEditMode} editMode={editMode}/>}
-
     </div>
   )
 }

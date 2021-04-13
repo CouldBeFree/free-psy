@@ -14,6 +14,7 @@
 }
 
 .field {
+  min-height: 54px;
   font-size: 16px;
   outline: none;
   color: var(--primary-darker);
