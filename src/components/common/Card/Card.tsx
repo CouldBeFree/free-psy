@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
 import photoExample from '../../../assets/images/example.webp';
-import { CardProps } from "../../../types/props/CardProps";
+import { CardProps } from "../../../types/props/cardProps";
 
 const Card: FunctionComponent<CardProps> = ({ fullName = 'Мазур Вікторія', photoUrl = photoExample, shortInfo = 'Гештальт-терапевт' }: CardProps) => {
   return (
