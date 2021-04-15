@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import { Field, Form } from "react-final-form";
 import Message from "./Message/Message";
 import style from "./Messenger.module.css";
 import Sender from "./Sender/Sender";

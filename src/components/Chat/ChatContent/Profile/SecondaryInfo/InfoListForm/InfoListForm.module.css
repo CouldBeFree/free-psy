@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.typeInfo {
+  font-family: 'Montserrat Medium';
+}
+
+.field {
+  min-height: 54px;
+  font-size: 16px;
+  outline: none;
+  color: var(--primary-darker);
+  resize: vertical;
+}
+
+.field:focus { 
+  outline: none !important;
+  box-shadow: 0 0 0 1px var(--primary-darker);
+}

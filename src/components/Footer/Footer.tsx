@@ -9,7 +9,7 @@ const Footer: FunctionComponent = () => {
       <div className={style.wrapper}>
         <div className={style.logoBlock}>
           <Logo />
-          <h5 className={style.title}>Спільно з ГО ‘Інсайт’ </h5>
+          <h5 className={style.title}>спільно з ГО &quot;Центр практичної<br />психології та психотерапії &quot;Інсайт&quot; </h5>
         </div>
         <SecondaryNavigation />
       </div>

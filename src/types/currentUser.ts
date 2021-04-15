@@ -6,4 +6,10 @@ export interface CurrentUser {
   userType: string;
   __v: number;
   _id: string;
+  photo: string;
+  education: string;
+  approaches: string;
+  workWith: string;
+  aboutMe: string;
+  contacts: string;
 }

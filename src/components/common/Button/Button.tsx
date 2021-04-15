@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { ButtonProps } from "../../../types/props/ButtonProps";
+import { ButtonProps } from "../../../types/props/buttonProps";
 import style from './Button.module.css';
 
 const Button: FunctionComponent<ButtonProps> = ({ children }: ButtonProps) => {

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import style from "./Respondent.module.css";
 
-function Corispondent() {
+const Respondent: FunctionComponent = () => {
   return (
     <div className={style.respondentBlock}>
       <div className={style.respondentInfo}>
@@ -18,4 +18,4 @@ function Corispondent() {
   )
 }
 
-export default Corispondent;
+export default Respondent;

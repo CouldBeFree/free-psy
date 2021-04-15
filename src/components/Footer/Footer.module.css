@@ -1,7 +1,7 @@
 .footer {
   background: linear-gradient(var(--blank), var(--tertiary-semitransparent));
   display: flex;
-  padding: 15px;
+  padding-top: 15px;
   justify-content: center;
 }
 
@@ -22,7 +22,8 @@
 
 .title {
   margin: 5px 0;
-  color: var(--primary-darker);
+  color: var(--secondary);
+  text-align: center;
 }
 
 @media screen and (max-width: 948px) {
