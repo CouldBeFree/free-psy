@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Field, Form } from "react-final-form";
-import { SearcherProps } from "../../../types/props/SearcherProps";
+import { SearcherProps } from "../../../types/props/searcherProps";
 import style from "./Searcher.module.css";
 
 const Searcher: FunctionComponent<SearcherProps> = ({headline, placeholder}: SearcherProps) => {

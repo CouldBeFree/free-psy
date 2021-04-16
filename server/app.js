@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const multerSettings = require('./utils/multer');
+// app.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 // const socket = require("socket.io");
 
 require('dotenv').config();
@@ -18,7 +19,7 @@ app.use(express.json());
 // Enable CORS
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:8080'
+  origin: 'http://localhost:3000'
 }));
 
 // app.use(cors())
@@ -63,7 +64,7 @@ const server = app.listen(port, () => {
 // Socket setup
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:8080',
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST']
   }
 });

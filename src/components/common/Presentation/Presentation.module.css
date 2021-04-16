@@ -25,6 +25,7 @@
   margin: 0;
   font-size: 42px;
 	font-family: 'Montserrat SemiBold';
+  white-space: pre-wrap;
 }
 
 .description {

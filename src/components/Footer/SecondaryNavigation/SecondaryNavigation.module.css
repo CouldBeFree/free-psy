@@ -12,6 +12,10 @@
   justify-content: center;
 }
 
+.linkBlock:first-child {
+  margin: 0;
+}
+
 .contacts {
 	font-family: 'Montserrat SemiBold';
 }
@@ -29,47 +33,8 @@
   color: var(--primary-darker);
 }
 
-.linkBlock > .link:before {
-  position: absolute;
-  top: 0;
-  left: 0;
+.link:hover, .emailLink:hover {
   color: var(--secondary);
-  width: 0;
-  overflow: hidden;
-  transition: all .5s;
-  white-space: nowrap;
-}
-
-.navigation .linkBlock:first-child .link:before {
-  content: "Контакти:\00a0 psyfree@ukr.net";
-}
-
-.navigation .linkBlock:nth-child(2) .link:first-child::before {
-  content: "Для\00a0 психологів";
-}
-
-.navigation .linkBlock:nth-child(2) .link:last-child::before {
-  content: "Для\00a0 клієнта";
-}
-
-.navigation .linkBlock:nth-child(3) .link:first-child::before {
-  content: "Реєстрація";
-}
-
-.navigation .linkBlock:nth-child(3) .link:last-child::before {
-  content: "Увійти";
-}
-
-.navigation .linkBlock:nth-child(4) .link:first-child::before {
-  content: "Підтримати";
-}
-
-.navigation .linkBlock:nth-child(4) .link:last-child::before {
-  content: "Задати\00a0 запитання";
-}
-
-.link:hover:before {
-  width: 100%;
 }
 
 @media screen and (max-width: 948px) {

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../types/state/rootState";
 
-export const dateConverter = (): string => {
+export const dateConverter = (): string | void => {
   const createdAt = useSelector((state: RootState)  => state.authentication.currentUser?.createdAt);
   const monthName: { [key: string]: string } = {
     "01": "січня",
@@ -17,6 +17,9 @@ export const dateConverter = (): string => {
     "11": "листопада",
     "12": "грудня"
   }
-  return `${monthName[createdAt!.substring(5,7)]} ${createdAt?.substring(0,4)}`;
+
+  if (createdAt !== undefined) {
+    return `${monthName[createdAt.substring(5,7)]} ${createdAt?.substring(0,4)}`;
+  }
 }
 
