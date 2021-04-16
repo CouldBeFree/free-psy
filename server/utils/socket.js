@@ -7,7 +7,8 @@ module.exports = function (io) {
     console.info('socket connected', socket.id)
 
     socket.on('user', async (user) => {
-      if (user) {
+      const isUserExists = sessionsMap.filter(item => item.name === user.name).length
+      if (user && !isUserExists) {
         sessionsMap.push({
           socketId: socket.id,
           name: user.name
@@ -26,12 +27,14 @@ module.exports = function (io) {
         await Message.create({
           message: msg.message,
           from: fromSocket.name,
-          to: msg.to
+          to: msg.to,
+          time: msg.time
         })
         io.to(targetSocket.socketId).emit('messageResponse', {
           message: msg.message,
           from: fromSocket.name,
-          to: msg.to
+          to: msg.to,
+          time: msg.time
         });
       }
     })
