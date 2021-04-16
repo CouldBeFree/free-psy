@@ -19,7 +19,7 @@ app.use(express.json());
 // Enable CORS
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:8080'
 }));
 
 // app.use(cors())
@@ -64,7 +64,7 @@ const server = app.listen(port, () => {
 // Socket setup
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:8080',
     methods: ['GET', 'POST']
   }
 });
