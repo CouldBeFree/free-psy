@@ -1,15 +1,24 @@
 import React, { FunctionComponent } from 'react';
+import { useDispatch } from "react-redux";
+import { setCurrentRespondent } from "../../../../../../redux/usersSlice";
+import { RespondentProps } from "../../../../../../types/props/respondentProps";
 import style from "./Respondent.module.css";
 
-const Respondent: FunctionComponent = () => {
+const Respondent: FunctionComponent<RespondentProps> = ({user}: RespondentProps) => {
+  
+  const dispatch = useDispatch();
+  const onRespondentClick = () => {
+    dispatch(setCurrentRespondent(user));
+  }
+
   return (
-    <div className={style.respondentBlock}>
+    <div className={style.respondentBlock} onClick={onRespondentClick}>
       <div className={style.respondentInfo}>
         <div className={style.avatar}>
           <div className={style.messageCounter}>0</div>
         </div>
         <div className={style.textInfo}>
-          <p className={style.name}>Катерина Ковач</p>
+          <p className={style.name}>{user.name}</p>
           <p className={style.lastMessage}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           <p className={style.messageTime}>11:15</p>
         </div>

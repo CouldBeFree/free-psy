@@ -2,14 +2,22 @@ import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
 import photoExample from '../../../assets/images/example.webp';
 import { CardProps } from "../../../types/props/cardProps";
+import { NavLink } from "react-router-dom";
 
-const Card: FunctionComponent<CardProps> = ({ fullName = 'Мазур Вікторія', photoUrl = photoExample, shortInfo = 'Гештальт-терапевт' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({ id, fullName, photoUrl = photoExample, workWith = 'поки що інформація відсутня' }: CardProps) => {
   return (
-    <div className={style.card}>
-      <p className={style.name}>{fullName}</p>
-      <img className={style.photo} src={photoUrl} alt="Фото психолога" />
-      <p className={style.info}>{shortInfo}</p>
-    </div>
+    <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}> 
+      <div className={style.card}>
+        <p className={style.name}>{fullName}</p>
+        <div className={style.imageBlock}>
+          <img className={style.photo} src={photoUrl} alt="Фото психолога" />
+        </div>
+        <div className={style.workWith}>
+          Працюю з:
+          <p className={style.shortInfo}>{workWith}</p>
+        </div>
+      </div>
+    </NavLink> 
   )
 }
 

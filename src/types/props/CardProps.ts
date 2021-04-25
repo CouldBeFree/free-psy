@@ -1,5 +1,6 @@
 export interface CardProps {
-  fullName?: string;
-  photoUrl?: string;
-  shortInfo?: string;
+  id: string | undefined;
+  fullName: string | undefined;
+  photoUrl: string | undefined;
+  workWith: string | undefined;
 }
