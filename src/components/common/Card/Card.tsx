@@ -4,7 +4,7 @@ import photoExample from '../../../assets/images/example.webp';
 import { CardProps } from "../../../types/props/cardProps";
 import { NavLink } from "react-router-dom";
 
-const Card: FunctionComponent<CardProps> = ({ id, fullName, photoUrl = photoExample, workWith = 'поки що інформація відсутня' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня', photoUrl = photoExample, workWith = 'поки що інформація відсутня' }: CardProps) => {
   return (
     <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}> 
       <div className={style.card}>
@@ -13,8 +13,8 @@ const Card: FunctionComponent<CardProps> = ({ id, fullName, photoUrl = photoExam
           <img className={style.photo} src={photoUrl} alt="Фото психолога" />
         </div>
         <div className={style.workWith}>
-          Працюю з:
-          <p className={style.shortInfo}>{workWith}</p>
+          {userType === "user" ? "Контакти:" : "Працюю з:"}
+          <p className={style.shortInfo}>{userType === "user" ? `${contacts}` : `${workWith}`}</p>
         </div>
       </div>
     </NavLink> 

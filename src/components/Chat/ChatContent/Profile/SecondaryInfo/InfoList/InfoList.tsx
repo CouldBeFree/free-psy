@@ -9,7 +9,6 @@ import { CurrentUser } from "../../../../../../types/currentUser";
 
 const InfoList: FunctionComponent<InfoListProps> = ({setEditMode, editMode, userId}: InfoListProps) => {
   
-
   const currentUser = userId ?
     useSelector((state: RootState)  => state.users.users?.filter((user: CurrentUser) => user._id === userId)[0]) :
     useSelector((state: RootState)  => state.authentication.currentUser);

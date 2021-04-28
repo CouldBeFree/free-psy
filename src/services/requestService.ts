@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { CurrentUser } from "../types/currentUser";
+import { MessageInterface } from "../types/messageInterface";
 import { PrimaryInfoFormData } from "../types/primaryInfoFormData";
 import { correctionUrl } from "./correctionUrlService";
 
@@ -52,6 +53,13 @@ export const usersApi = {
     }
     return instance.get(`users?user=${queryParams[userType]}`)
       .then(response => response.data.data.map((user: CurrentUser) => correctionUrl(user)));
+  },
+  getMessages: (name: string): Promise<MessageInterface[]> => {
+    return instance.get("/users/messages", {
+      params: {
+        user: name
+      }
+    }).then(response => response.data.data);
   }
 }
 

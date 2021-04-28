@@ -11,7 +11,7 @@ const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProp
     <div className={style.respondents}>
       <Searcher placeholder="введіть текст" headline="Пошук повідомлення"/>
       <div className={style.respondentList}>
-        {users && users.map((user: CurrentUser) => <Respondent key={user._id} user={user} />)}
+        {users && users.map((user: CurrentUser) => <Respondent key={user._id} user={user}/>)}
       </div>
     </div>
   )

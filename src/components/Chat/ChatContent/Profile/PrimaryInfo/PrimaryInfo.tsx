@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ChangeEventHandler, FunctionComponent, useEffect } from 'react';
+import React, { ChangeEventHandler, FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSetPhoto } from "../../../../../redux/authenticationSlice";
 import { dateConverter } from "../../../../../services/dateConverterService";
@@ -9,24 +9,21 @@ import buttonStyle from "../SecondaryInfo/SecondaryInfo.module.css";
 import defaultPhoto from "../../../../../assets/images/default-photo.png";
 import { PrimaryInfoProps } from "../../../../../types/props/primaryInfoProps";
 import { CurrentUser } from "../../../../../types/currentUser";
-import { fetchUsers } from "../../../../../redux/usersSlice";
 
 const PrimaryInfo: FunctionComponent<PrimaryInfoProps> = ({userId}: PrimaryInfoProps) => {
 
   const dispatch = useDispatch();
-  const userType = useSelector((state: RootState)  => state.authentication.currentUser?.userType);
   const currentUser = userId ?
     useSelector((state: RootState)  => state.users.users?.filter((user: CurrentUser) => user._id === userId)[0]) :
     useSelector((state: RootState)  => state.authentication.currentUser);
   const isSubmitting = useSelector((state: RootState)  => state.authentication.isSubmitting);
   
-  useEffect(() => {
-    !currentUser &&  dispatch(fetchUsers(userType!));
-  }, []);
 
   const onPhotoSelected: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const file = e.target.files![0];
-    dispatch(fetchSetPhoto({file, id: currentUser!._id}));
+    if (e.target.files && currentUser) {
+      const file = e.target.files[0];
+      dispatch(fetchSetPhoto({file, id: currentUser._id}));
+    }
   }
   
   return (

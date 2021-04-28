@@ -14,14 +14,25 @@ const UserList: FunctionComponent<UserListProps> = ({filterName}: UserListProps)
   const users = useSelector((state: RootState) => state.users.users)?.filter((user: CurrentUser) => user.name.includes(filterName));
   
   useEffect(() => {
-    !users && dispatch(fetchUsers(userType!));
+    if (userType && !users) {
+      dispatch(fetchUsers(userType));
+  }
   }, []);
   
   return (
     <div className={style.userList}>
       <div className={style.scrollBlock}>
         {users ?
-          users.map((user: CurrentUser) => <Card key={user._id} id={user._id} fullName={user.name} photoUrl={user.photo} workWith={user.workWith}/>) : <Loader />}
+          users.map((user: CurrentUser) => <Card
+            key={user._id}
+            id={user._id}
+            fullName={user.name}
+            photoUrl={user.photo}
+            workWith={user.workWith}
+            userType={user.userType}
+            contacts={user.contacts}
+          />) : 
+          <Loader />}
       </div>
     </div>
   )

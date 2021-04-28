@@ -2,15 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FailureAction } from "../types/actions/failureAction";
 import { FetchUsersAction } from "../types/actions/fetchUsersAction";
 import { GetUsersSuccessAction } from "../types/actions/getUsersSuccessAction";
-import { SetCurrentRespondentAction } from "../types/actions/setCurrentRespondentAction";
+import { SetUserAction } from "../types/actions/setUserAction";
+import { CurrentUser } from "../types/currentUser";
 import { UsersState } from "../types/state/usersState";
 
-const initialState = {
+const initialState: UsersState = {
   users: null,
-  currentRespondent: null,
   isSubmitting: false,
   isLoading: true,
-  validationBackendErrors: null
+  validationBackendErrors: null,
+  usersStatus: null
 }
 
 const usersSlice = createSlice({
@@ -27,20 +28,19 @@ const usersSlice = createSlice({
       state.isLoading = false;
       state.validationBackendErrors = null;
       state.users = action.payload;
-      state.currentRespondent = action.payload[0];
     },
     getUsersFailure: (state: UsersState, action: FailureAction): void => {
       state.isSubmitting = false;
       state.validationBackendErrors = action.payload;
     },
-    setCurrentRespondent: (state: UsersState, action: SetCurrentRespondentAction): void => {
-      state.currentRespondent = action.payload;
+    setUsersStatus: (state: UsersState, action: SetUserAction): void => {
+      state.usersStatus = action.payload;
     },
-    clearState: (state: UsersState): void => {
-      state = initialState;
+    clearState: (): UsersState => {
+      return initialState; 
     }
   }
 });
 
 export default usersSlice.reducer;
-export const { fetchUsers, getUsers, getUsersSuccess, getUsersFailure, clearState, setCurrentRespondent } = usersSlice.actions;
+export const { fetchUsers, getUsers, getUsersSuccess, getUsersFailure, clearState, setUsersStatus } = usersSlice.actions;
