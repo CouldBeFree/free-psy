@@ -1,8 +1,6 @@
-import { AxiosResponse } from "axios";
 import { CurrentUser } from "../types/currentUser";
 
-export const correctionUrl = (response: AxiosResponse): CurrentUser => {
-  const currentUser = response.data.data;
+export const correctionUrl = (currentUser: CurrentUser): CurrentUser => {
   if (currentUser.photo) {
     currentUser.photo = `http://localhost:5050/${currentUser.photo.replace("\\", "/")}`;
   }

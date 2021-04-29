@@ -2,15 +2,19 @@
   background-color: var(--tertiary-light);
   display: flex;
   flex-direction: column;
-  overflow: overlay;
-  justify-content: space-between;
+  overflow: auto;
 }
 
 .correspondence {
-  overflow: overlay;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .respondentenInfo {
+  justify-self: flex-start;
+  align-self: start;
   width: 100%;
   min-height: 136px;
   padding: 0 25px;
@@ -20,26 +24,18 @@
   align-items: center;
 }
 
-.avatar {
-  min-height: 110px;
-  min-width: 110px;
+.avatarBlock {
+  position: relative;
+  height: 110px;
+  width: 110px;
   border-radius: 50%;
   background-color: var(--primary-light);
+  overflow: hidden;
 }
 
-.info {
-  margin-left: 15px;
-}
-
-.name {
-  font-family: 'Montserrat Medium';
-  color: var(--primary-darker);
-  font-size: 1.6rem;
-  margin: 0;
-  margin-top: 20px;
-}
-
-.status {
-  margin: 0;
-  font-family: 'Montserrat Thin';
+.avatar {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
 }
