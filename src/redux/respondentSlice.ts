@@ -8,7 +8,7 @@ import { RespondentState } from "../types/state/respondentState";
 
 const initialState: RespondentState = {
   currentRespondent: null,
-  messages: null,
+  messages: {},
   isSubmitting: false,
   isLoading: true,
   backendErrors: null
@@ -29,14 +29,17 @@ const respondentSlice = createSlice({
     },
     getMessagesSuccess: (state: RespondentState, action: GetMessagesSuccessAction): void => {
       state.isLoading = false;
-      state.messages = action.payload.reverse();
+      state.messages[action.payload.from] = action.payload.messages.reverse();
     },
     getMessagesFailure: (state: RespondentState, action: FailureAction): void => {
       state.isLoading = false;
       state.backendErrors = action.payload;
     },
     setMessage: (state: RespondentState, action: SetMessageAction): void => {
-      state.messages?.unshift(action.payload);
+      const respondent = Object.keys(state.messages).find(key => key === action.payload.addresseeInState);
+      if (respondent) {
+        state.messages[respondent].unshift(action.payload.message);
+      }
     },
     clearState: (): RespondentState => {
       return initialState;

@@ -2,5 +2,8 @@ import { MessageInterface } from "../messageInterface";
 
 export interface SetMessageAction {
   type: string;
-  payload: MessageInterface;
+  payload: {
+    addresseeInState: string;
+    message: MessageInterface
+  };
 }

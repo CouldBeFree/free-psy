@@ -23,7 +23,11 @@ const InfoListForm: FunctionComponent<InfoListProps> = ({setEditMode, editMode}:
   const dispatch = useDispatch();
 
   const onInfoSave = (primaryInfo: PrimaryInfoFormData): void => {
-    if (id !== undefined) {
+    let property: keyof typeof primaryInfo;
+    for (property in primaryInfo) {
+      primaryInfo[property] = primaryInfo[property].trim();
+    }
+    if (id) {
       dispatch(fetchSetInfo({primaryInfo, id}));
     }
     setEditMode(!editMode);
