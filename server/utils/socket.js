@@ -2,8 +2,6 @@ const Message = require('../models/Message');
 const chalk = require('chalk');
 
 module.exports = function (io) {
-  // TODO send online users
-  // TODO send online user
   const sessionsMap = [];
 
   io.on("connection", async function (socket) {
