@@ -19,7 +19,7 @@ const Messenger: FunctionComponent<MessengerProps> = ({currentRespondent}: Messe
     }
   }, []);
   
-  const messages = useSelector((state: RootState) => state.respondent.messages);
+  const messages = useSelector((state: RootState) => state.respondent.messages[currentRespondent.name]);
   const isLoading = useSelector((state: RootState) => state.respondent.isLoading);
 
   return (

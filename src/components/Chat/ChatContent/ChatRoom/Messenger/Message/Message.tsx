@@ -22,7 +22,7 @@ const Message: FunctionComponent<MessageProps> = ({message, respondentPhoto}: Me
         [style.primaryBackgroundColor]: isOwner
       })}>
         {isOwner && currentUserPhoto && <img className={style.avatar} src={currentUserPhoto}/>}
-        {respondentPhoto && <img className={style.avatar} src={respondentPhoto}/>}
+        {!isOwner && respondentPhoto && <img className={style.avatar} src={respondentPhoto}/>}
       </div>
       <div className={style.writingBlock}>
         <p className={classNames(style.writing, {

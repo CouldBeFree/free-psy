@@ -28,7 +28,7 @@ const Sender: FunctionComponent = () => {
         to: respondentName
       }
       socket.emit("message", message);
-      dispatch(setMessage(message));
+      dispatch(setMessage({message, addresseeInState: message.to}));
     }
   }
 

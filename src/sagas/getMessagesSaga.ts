@@ -8,7 +8,7 @@ function* fetchMessagesWorker({payload}: FetchUsersAction) {
   try {
     yield put(getMessages());
     const messages: MessageInterface[] = yield call(usersApi.getMessages, payload);
-    yield put(getMessagesSuccess(messages));
+    yield put(getMessagesSuccess({from: payload, messages: messages}));
   } catch (error) {
     yield put(getMessagesFailure("щось пішло не так"));
   }

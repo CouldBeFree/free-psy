@@ -26,11 +26,22 @@
   max-height: 60px;
 }
 
-.avatar {
+.avatarBlock {
+  position: relative;
   min-height: 60px;
+  height: 60px;
   min-width: 60px;
+  width: 60px;
   border-radius: 50%;
   background-color: var(--primary-light);
+}
+
+.avatar {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .textInfo {
@@ -60,7 +71,9 @@
 }
 
 .messageCounter {
-  float: right;
+  position: absolute;
+  right: 0;
+  top: -5px;
   background-color: var(--primary);
   height: 21px;
   width: 21px;
@@ -68,4 +81,5 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  z-index: 1;
 }
