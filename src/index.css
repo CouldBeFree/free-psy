@@ -41,10 +41,11 @@
   --tertiary-semitransparent: rgba(var(--tertiary-variable), .55);
   --blank-variable: 255, 255, 255;
   --blank: rgb(var(--blank-variable));
-  --blank-light: rgba(var(--blank-variable), .27);
   /* chat page*/
   --primary-translucent: rgba(var(--primary-variable), .67);
   --primary-light: rgba(var(--primary-variable), .27);
+  --blank-semitransparent: rgba(var(--blank-variable), .55);
+  --blank-light: rgba(var(--blank-variable), .27);
   --tertiary-light: rgba(var(--tertiary-variable), .27);
   --secondary-semitransparent: rgba(var(--secondary-variable), .55);
 

@@ -14,7 +14,7 @@ const Slider: FunctionComponent = () => {
             </svg>
           </div>
           <div className={style.cardBlock}>
-            <Card fullName={undefined} photoUrl={undefined} shortInfo={undefined} />
+            <Card />
           </div>
           <div className={style.arrow}>
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">

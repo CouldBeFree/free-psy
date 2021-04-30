@@ -17,14 +17,24 @@
   flex-direction: row-reverse;
 }
 
-.avatar {
+.avatarBlock {
   align-self: flex-end;
   min-width: 53px;
+  width: 53px;
   min-height: 53px;
-  max-height: 53px;
+  height: 53px;
   border-radius: 50%;
-  background-color: var(--primary-light);
   margin-bottom: 20px;
+  overflow: hidden;
+  background-color: var(--primary-light);
+}
+
+.avatar {
+  min-width: 53px;
+  width: 53px;
+  min-height: 53px;
+  height: 53px;
+  object-fit: cover;
 }
 
 .writingBlock {

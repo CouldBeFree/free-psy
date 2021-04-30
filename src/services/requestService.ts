@@ -1,11 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 import { CurrentUser } from "../types/currentUser";
+import { MessageInterface } from "../types/messageInterface";
 import { PrimaryInfoFormData } from "../types/primaryInfoFormData";
 import { correctionUrl } from "./correctionUrlService";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'http://localhost:5050/',
+  baseURL: 'http://localhost:5050/api/v1/',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -13,20 +14,20 @@ const instance = axios.create({
 
 export const authApi = {
   register: (name: string, password: string, email: string, userType: string): Promise<AxiosResponse> => {
-    return instance.post("api/v1/auth/register", {name, email, password, userType });
+    return instance.post("auth/register", {name, email, password, userType });
   },
 
   authMe: (): Promise<CurrentUser> => {
-    return instance.get("api/v1/auth/me")
-      .then(response => correctionUrl(response));
+    return instance.get("auth/me")
+      .then(response => correctionUrl(response.data.data));
   },
 
   login: ( email: string,  password: string ): Promise<AxiosResponse> => {  
-    return instance.post("api/v1/auth/login", { password, email });
+    return instance.post("auth/login", { password, email });
   },
 
   logout: (): Promise<AxiosResponse> => {  
-    return instance.get("api/v1/auth/logout");
+    return instance.get("auth/logout");
   }
 }
 
@@ -34,14 +35,31 @@ export const profileApi = {
   setPhoto: (file: File, id: string): Promise<CurrentUser> => {
     const formData = new FormData();
     formData.append('thumb', file);
-    return instance.put(`/api/v1/users/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-      .then(response => correctionUrl(response));
+    return instance.put(`/users/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      .then(response => correctionUrl(response.data.data));
   },
   setInfo: (primaryInfo: PrimaryInfoFormData, id: string): Promise<CurrentUser> => {
 
-    return instance.put(`/api/v1/users/${id}`, primaryInfo )
-      .then(response => {
-        return correctionUrl(response)});
+    return instance.put(`/users/${id}`, primaryInfo )
+      .then(response => correctionUrl(response.data.data));
+  }
+}
+
+export const usersApi = {
+  getUsers: (userType: string): Promise<CurrentUser[]> => {
+    const queryParams: { [key: string]: string } = {
+      'user': 'psychologist',
+      'psychologist': 'user'
+    }
+    return instance.get(`users?user=${queryParams[userType]}`)
+      .then(response => response.data.data.map((user: CurrentUser) => correctionUrl(user)));
+  },
+  getMessages: (name: string): Promise<MessageInterface[]> => {
+    return instance.get("/users/messages", {
+      params: {
+        user: name
+      }
+    }).then(response => response.data.data);
   }
 }
 

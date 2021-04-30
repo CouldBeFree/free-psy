@@ -10,7 +10,7 @@ const ChatContent: FunctionComponent = () => {
     <div className={style.chatContentBlock}>
       <Route exact path="/chat" render={() => <ChatRoom />} />
       <Route path="/chat/users" render={() => <Users />} />
-      <Route path="/chat/profile" render={() => <Profile />} />
+      <Route path="/chat/profile/:userId?" render={() => <Profile />} />
     </div>
   )
 }

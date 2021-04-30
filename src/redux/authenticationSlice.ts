@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { AuthenticationState } from "../types/state/authenticationState";
+import { createSlice } from "@reduxjs/toolkit"
 import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 import { SetCurrentUserAction } from "../types/actions/setCurrentUserAction";
 import { FetchLoginAction } from "../types/actions/fetchLoginAction";
 import { FailureAction } from "../types/actions/failureAction";
 import { FetchSetPhotoAction } from "../types/actions/fetchSetPhotoAction";
 import { FetchSetInfoAction } from "../types/actions/fetchSetInfoAction";
+import { AuthenticationState } from "../types/state/authenticationState";
 
 const authenticationSlice = createSlice({
   name: 'authentication',

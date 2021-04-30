@@ -13,7 +13,8 @@ module.exports = function (io) {
       if (user && !isUserExists) {
         sessionsMap.push({
           socketId: socket.id,
-          name: user.name
+          name: user.name,
+          userId: user._id
         })
         io.emit('onlineUsers', sessionsMap)
         sessionsMap.forEach(el => {
@@ -48,8 +49,8 @@ module.exports = function (io) {
       }
     })
 
-    socket.on('typing', async(name) => {
-      socket.broadcast.emit('userTyping', name)
+    socket.on('typing', async(id) => {
+      socket.broadcast.emit('userTyping', id)
     })
 
     socket.on('disconnect',  async () => {

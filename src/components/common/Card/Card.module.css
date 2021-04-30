@@ -1,15 +1,21 @@
+.linkWrapper {
+  text-decoration: none;
+}
+
 .card {
   position: relative;
-  height: 538px;
-  width: 358px;
+  width: 350px;
   display: flex;
+  text-decoration: none;
+  list-style: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient( var(--blank), var(--tertiary));
-  border-radius: 15px;
+  background-color: var(--blank);
+  border-radius: 5px;
   font-size: 24px;
   color: var(--primary-darker);
+  box-shadow: 0 0 10px 1px var(--primary-light);
 }
 
 .name {
@@ -17,20 +23,76 @@
   padding-left: 15px;
 }
 
-.info {
+.workWith {
   width: calc(100% - 15px);
-  text-align: end;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 0 15px;
   padding-right: 15px;
+  margin: 5px 0;
+	font-family: 'Montserrat SemiBold';
+}
+
+.shortInfo {
+  position: relative;
+  display: flex;
+  margin: 5px 0;
+  line-height: 16px;
+  height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+	font-family: 'Montserrat Regular';
+  white-space: pre-wrap;
+}
+
+.shortInfo:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 16px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--blank));
+}
+
+.textCenter {
+  align-items: center;
+}
+
+.imageBlock {
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
 }
 
 .photo {
-  width: 85%;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 868px) {
   .card {
-    height: 376px;
-    width: 250px;
+    width: 300px;
     font-size: 16px;
+  }
+
+  .imageBlock {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .photo {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .shortInfo {
+    line-height: 14px;
+    font-size: 14px;
   }
 }
