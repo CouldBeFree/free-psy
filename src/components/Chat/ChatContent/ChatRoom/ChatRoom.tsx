@@ -21,9 +21,9 @@ const ChatRoom: FunctionComponent = () => {
     userType && dispatch(fetchUsers(userType));
   }, []);
 
-  useEffect(() => {
-    users && history.push(`${history.location.pathname}/${users[0]._id}`)
-  }, [users]);
+  // useEffect(() => {
+  //   users && history.push(`${history.location.pathname}/${users[0]._id}`)
+  // }, [users]);
 
   return (
     <div className={style.chatRoom}>
