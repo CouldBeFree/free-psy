@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
 import photoExample from '../../../assets/images/example.webp';
-import { CardProps } from "../../../types/props/cardProps";
+import { CardProps } from "../../../types/props/CardProps";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 

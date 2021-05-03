@@ -4,7 +4,7 @@ import { RootState } from "../../../../../types/state/rootState";
 import Message from "./Message/Message";
 import style from "./Messenger.module.css";
 import Sender from "./Sender/Sender";
-import { clearState, fetchMessages } from "../../../../../redux/respondentSlice";
+import { fetchMessages } from "../../../../../redux/respondentSlice";
 import { MessageInterface } from "../../../../../types/messageInterface";
 import { MessengerProps } from "../../../../../types/props/messengerProps";
 import TopLiner from "./TopLiner/TopLiner";
@@ -13,10 +13,7 @@ const Messenger: FunctionComponent<MessengerProps> = ({currentRespondent}: Messe
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMessages(currentRespondent.name));
-    return () => {
-      dispatch(clearState());
-    }
+      dispatch(fetchMessages(currentRespondent.name));
   }, []);
   
   const messages = useSelector((state: RootState) => state.respondent.messages[currentRespondent.name]);

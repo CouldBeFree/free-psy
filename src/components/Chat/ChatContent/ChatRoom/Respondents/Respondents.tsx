@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { NavLink } from "react-router-dom";
 import { CurrentUser } from "../../../../../types/currentUser";
 import { RespondensProps } from "../../../../../types/props/respondensProps";
 import Searcher from "../../../../common/Searcher/Searcher";
@@ -11,7 +12,17 @@ const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProp
     <div className={style.respondents}>
       <Searcher placeholder="введіть текст" headline="Пошук повідомлення"/>
       <div className={style.respondentList}>
-        {users && users.map((user: CurrentUser) => <Respondent key={user._id} user={user}/>)}
+        {users && users.map((user: CurrentUser) =>
+        <NavLink
+          className={style.link}
+          key={user._id}
+          to={`/chat/${user._id}`}
+          activeClassName={style.selected}
+          isActive={(match, location) => location.pathname.includes(user._id)}
+        >
+          <Respondent user={user}/>
+        </NavLink>
+        )}
       </div>
     </div>
   )

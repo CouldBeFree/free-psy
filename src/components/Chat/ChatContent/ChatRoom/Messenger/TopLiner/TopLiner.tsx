@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import { socket } from "../../../../../../services/socketService";
 import { MessengerProps } from "../../../../../../types/props/messengerProps";
 import { RootState } from "../../../../../../types/state/rootState";
 import style from "./TopLiner.module.css"
 
-const TopLiner = ({currentRespondent}: MessengerProps) => {
+const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: MessengerProps) => {
   
   const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent._id));
   const [typingStatus, setTypingStatus] = useState("");

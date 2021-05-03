@@ -1,18 +1,25 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchLogout } from "../../../../redux/authenticationSlice";
 import { RootState } from "../../../../types/state/rootState";
 import style from './Logout.module.css';
 
 const Logout: FunctionComponent = () => {
-  const dispatch = useDispatch()
+  
+  const dispatch = useDispatch();
+  const history = useHistory();
   const userName = useSelector((state: RootState) => state.authentication.currentUser?.name);
+
+  const redirect = () => {
+    history.push("/chat/profile");
+  }
 
   const onLogout = () => {
     dispatch(fetchLogout());
   }
   return (
-    <div className={style.logout}>
+    <div className={style.logout} onClick={redirect}>
       <svg className={style.icon} width="32" height="37" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.75 18.5C20.6719 18.5 24.75 14.4922 24.75 9.5C24.75 4.57812 20.6719 0.5 15.75 0.5C10.7578 0.5 6.75 4.57812 6.75 9.5C6.75 14.4922 10.7578 18.5 15.75 18.5ZM22.0078 20.75H20.8125C19.2656 21.5234 17.5781 21.875 15.75 21.875C13.9219 21.875 12.1641 21.5234 10.6172 20.75H9.42188C4.21875 20.75 0 25.0391 0 30.2422V33.125C0 35.0234 1.47656 36.5 3.375 36.5H28.125C29.9531 36.5 31.5 35.0234 31.5 33.125V30.2422C31.5 25.0391 27.2109 20.75 22.0078 20.75Z" fill="#614885"/>
       </svg>

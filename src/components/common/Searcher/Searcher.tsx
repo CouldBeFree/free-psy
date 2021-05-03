@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Field, Form } from "react-final-form";
-import { SearcherProps } from "../../../types/props/searcherProps";
+import { SearcherProps } from "../../../types/props/SearcherProps";
 import { SearchFormData } from "../../../types/serchFormData";
 import style from "./Searcher.module.css";
 
 const Searcher: FunctionComponent<SearcherProps> = ({setFilterName, headline, placeholder}: SearcherProps) => {
   const onSearch = (formData: SearchFormData): void =>  {
-    console.log(formData);
-    
     if (setFilterName) {
       setFilterName(formData.searcher);
     }

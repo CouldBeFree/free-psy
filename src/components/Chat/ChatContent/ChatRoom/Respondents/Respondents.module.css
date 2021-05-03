@@ -12,5 +12,15 @@
   height: 100%;
   margin: 15px;
   border-radius: 15px;
-  overflow: overlay;
+  overflow: auto;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+}
+
+.selected {
+  background-color: var(--tertiary-light);
+  transition: all .2s;
 }

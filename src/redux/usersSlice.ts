@@ -3,7 +3,6 @@ import { FailureAction } from "../types/actions/failureAction";
 import { FetchUsersAction } from "../types/actions/fetchUsersAction";
 import { GetUsersSuccessAction } from "../types/actions/getUsersSuccessAction";
 import { SetUserAction } from "../types/actions/setUserAction";
-import { CurrentUser } from "../types/currentUser";
 import { UsersState } from "../types/state/usersState";
 
 const initialState: UsersState = {

@@ -24,22 +24,20 @@ const App: FunctionComponent = () => {
       {isLoading ?
         <Loader /> :
         isAuthenticated ?
-          <>
-            <Redirect to="/chat" />
+          <Switch>
             <Route path="/chat" render={() => <Chat />} />
-          </> :
-          <>
-            <Switch>
-              <Redirect from="/chat" to="/authentication" />
-              <Route path="/" render={() =>
-                <>
-                  <Header />
-                  <Content />
-                  <Footer />
-                </>
-              } />
-            </Switch>
-          </>
+            <Redirect from="*" to="/chat" />
+          </Switch> :
+          <Switch>
+            <Redirect from="/chat" to="/authentication" />
+            <Route path="/" render={() =>
+              <>
+                <Header />
+                <Content />
+                <Footer />
+              </>
+            } />
+          </Switch>
       }  
     </>
   )

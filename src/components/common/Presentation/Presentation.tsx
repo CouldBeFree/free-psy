@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { PresentationProps } from "../../../types/props/presentationProps";
 
 const Presentation: FunctionComponent<PresentationProps> = ({slogan, description, buttonText, image}: PresentationProps) => {
+
   return (
     <div className={style.presenation}>
       <div className={style.wrapper}>

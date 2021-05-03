@@ -1,9 +1,10 @@
 import { FieldValidator } from 'final-form';
+import { RepeatPasswordValues } from "../types/repeatPasswordValues";
 
 export const required: FieldValidator<string> = (value) => (value ? undefined : 'Заповніть поле');
 export const minLength = (amount: number): FieldValidator<string> => (value) => (value.length < amount ? `Введіть мінімум ${amount} символи` : undefined);
 export const maxLength = (amount: number): FieldValidator<string> => (value) => (value.length > amount ? `Дозволено максимум ${amount} символи` : undefined);
-export const repeatPassword: FieldValidator<string> = (value, allValues) => {
+export const repeatPassword: FieldValidator<string> = (value, allValues: RepeatPasswordValues) => {
   return (allValues.password === allValues.rePassword ? undefined : 'Паролі не співпадають')};
 export const composeValidators = (...validators: Array<FieldValidator<string>>): FieldValidator<string> => (value, allValues) => {
   return validators.reduce((error, validator) => error || validator(value, allValues), undefined);

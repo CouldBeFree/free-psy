@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import style from "./Sender.module.css";
-import moment from "moment";
 import { Field, Form } from "react-final-form"
 import classNames from "classnames";
 import { socket } from "../../../../../../services/socketService";

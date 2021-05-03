@@ -10,7 +10,7 @@ function* fetchUsersWorker({payload}: FetchUsersAction) {
     yield put(getUsers());
     const users: CurrentUser[] = yield call(usersApi.getUsers, payload);
     yield put(getUsersSuccess(users));
-    yield put(setCurrentRespondent(users[0]));
+    yield users[0] && put(setCurrentRespondent(users[0]));
   } catch (error) {
     yield put(getUsersFailure("щось пішло не так"));
   }
