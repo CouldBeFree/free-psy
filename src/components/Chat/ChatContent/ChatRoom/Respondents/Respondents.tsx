@@ -13,13 +13,13 @@ const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProp
       <Searcher placeholder="введіть текст" headline="Пошук повідомлення"/>
       <div className={style.respondentList}>
         {users && users.map((user: CurrentUser) =>
-        <NavLink to={`/chat/${user._id}`} key={user._id} className={style.link} activeClassName={style.selected}
-          isActive={(match, location) => {
-            console.log()
-            if(location.pathname.includes(user._id)) {
-              return true
-            } else return false
-          }}>
+        <NavLink
+          to={`/chat/${user._id}`}
+          key={user._id}
+          className={style.link}
+          activeClassName={style.selected}
+          isActive={(match, location) => location.pathname.includes(user._id)}
+        >
           <Respondent user={user}/>
         </NavLink>
         )}
