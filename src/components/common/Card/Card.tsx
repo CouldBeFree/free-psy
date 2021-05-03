@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
 import photoExample from '../../../assets/images/example.webp';
-import { CardProps } from "../../../types/props/cardProps";
+import { CardProps } from "../../../types/props/CardProps";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
 const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня...', photoUrl = photoExample, workWith = 'поки що інформація відсутня' }: CardProps) => {
   return (
-    <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}> 
+    <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}>
       <div className={style.card}>
         <p className={style.name}>{fullName}</p>
         <div className={style.imageBlock}>
@@ -20,7 +20,7 @@ const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts =
           })}>{userType === "user" ? `${contacts}` : `${workWith}`}</p>
         </div>
       </div>
-    </NavLink> 
+    </NavLink>
   )
 }
 
