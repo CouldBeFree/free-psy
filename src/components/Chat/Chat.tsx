@@ -17,7 +17,6 @@ const Chat: FunctionComponent = () => {
   const currentUser = useSelector((state: RootState) => state.authentication.currentUser);
   
   const onReceiveMessage = (message: MessageInterface) => {
-
     dispatch(setMessage({message, addresseeInState: message.from}));
   }
   
