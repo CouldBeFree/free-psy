@@ -1,8 +1,0 @@
-.profile {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: minmax(290px, .8fr) 2.5fr;
-  color: var(--primary-darker);
-  overflow: overlay;
-}
