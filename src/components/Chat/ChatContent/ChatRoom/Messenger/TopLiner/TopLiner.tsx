@@ -7,12 +7,13 @@ import style from "./TopLiner.module.css"
 
 const TopLiner: FunctionComponent = () => {
   
-  const currentRespondent = useSelector((state: RootState) => state.respondent.currentRespondent)
+  const currentRespondent = useSelector((state: RootState) => state.respondent.currentRespondent);
   const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent?._id));
   const [typingStatus, setTypingStatus] = useState("");
   // let typingTimer: ReturnType<typeof setTimeout>;
 
 const onUserTyping = (userId: string): void => {
+    const currentRespondent = useSelector((state: RootState) => state.respondent.currentRespondent);
     console.log(currentRespondent?._id, '----', userId)
 
     if(currentRespondent?._id === userId) {
