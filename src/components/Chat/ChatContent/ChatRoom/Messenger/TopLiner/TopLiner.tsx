@@ -12,11 +12,12 @@ const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: Messen
   let typingTimer: ReturnType<typeof setTimeout>;
 
   const onUserTyping = (userId: string): void => {
-    console.log('typung...')
     if(currentRespondent._id === userId) {
+      console.log('currentRespondent is typing ..............', typingStatus)
       clearTimeout(typingTimer);
       setTypingStatus("typing...");
       typingTimer = setTimeout(() => {
+        console.log('clear time out')
         setTypingStatus("");
       }, 1000);
     }
