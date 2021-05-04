@@ -15,6 +15,7 @@ const Sender: FunctionComponent = () => {
   const currentUserId = useSelector((state: RootState) => state.authentication.currentUser?._id);
 
   const onTyping = (): void => {
+    console.log(currentUserId , 'typiger user id')
     socket.emit("typing", currentUserId);
   }
 
