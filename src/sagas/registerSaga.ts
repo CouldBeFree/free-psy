@@ -16,13 +16,16 @@ function* fetchRegisterWorker({payload}: FetchRegisterAction) {
     yield put(registerSuccess());
   } catch (error) {
     let errorMessage: string = error.response.data.message;
+    console.log(error)
     // translate errors to ukrainian
-    if (errorMessage.includes("User with email")) { // "User with this email is already exists"
-      errorMessage = "Користувач з цією електронною поштою вже зареєстровний";
-    } else if (errorMessage.includes("User with name")) {
-      errorMessage = "Користувач з цим псевдонімом вже зареєстровний";
-    } else {
-      errorMessage = "Щось пішло не так, зверніться в техпідтримку";
+    if (errorMessage) {
+      if (errorMessage.includes("User with email")) { // "User with this email is already exists"
+        errorMessage = "Користувач з цією електронною поштою вже зареєстровний";
+      } else if (errorMessage.includes("User with name")) {
+        errorMessage = "Користувач з цим псевдонімом вже зареєстровний";
+      } else {
+        errorMessage = "Щось пішло не так, зверніться в техпідтримку";
+      }
     }
     yield put(registerFailure(errorMessage));
   }
