@@ -25,7 +25,7 @@ const Messenger: FunctionComponent<MessengerProps> = ({currentRespondent}: Messe
         <div className={style.avatarBlock}>
           {currentRespondent.photo && <img className={style.avatar} src={currentRespondent.photo}/>}
         </div>
-        <TopLiner/>
+        <TopLiner currentRespondent={currentRespondent}/>
       </div>
         <div className={style.correspondence}>
           {!isLoading && messages?.map((message: MessageInterface) => <Message key={message.time} message={message} respondentPhoto={currentRespondent.photo}/>)}

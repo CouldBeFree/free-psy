@@ -5,25 +5,19 @@ import { MessengerProps } from "../../../../../../types/props/messengerProps";
 import { RootState } from "../../../../../../types/state/rootState";
 import style from "./TopLiner.module.css"
 
-const TopLiner: FunctionComponent = () => {
+const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: MessengerProps) => {
   
-  const currentRespondent = useSelector((state: RootState) => state.respondent.currentRespondent);
-  console.log('render', currentRespondent)
-  const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent?._id));
+  const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent._id));
   const [typingStatus, setTypingStatus] = useState("");
-  // let typingTimer: ReturnType<typeof setTimeout>;
+  let typingTimer: ReturnType<typeof setTimeout>;
 
-const onUserTyping = (userId: string): void => {
-    console.log(currentRespondent?._id, '----', userId)
-
-    if(currentRespondent?._id === userId) {
-      console.log('currentRespondent is typing ..............', typingStatus)
-      // clearTimeout(typingTimer);
+  const onUserTyping = (userId: string): void => {
+    if(currentRespondent._id === userId) {
+      clearTimeout(typingTimer);
       setTypingStatus("typing...");
-      // typingTimer = setTimeout(() => {
-      //   console.log('clear time out')
-      //   setTypingStatus("");
-      // }, 1000);
+      typingTimer = setTimeout(() => {
+        setTypingStatus("");
+      }, 1000);
     }
   }
   

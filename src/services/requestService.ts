@@ -6,7 +6,7 @@ import { correctionUrl } from "./correctionUrlService";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'https://server-psy-free.herokuapp.com/api/v1/',
+  baseURL: 'https://chat-server-app-node.herokuapp.com/api/v1/',
   headers: {
     'Content-Type': 'application/json'
   }
