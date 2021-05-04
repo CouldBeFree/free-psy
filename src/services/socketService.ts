@@ -1,3 +1,3 @@
 import io from "socket.io-client";
 
-export const socket = io("https://chat-server-app-node.herokuapp.com/");
+export const socket = io("https://server-psy-free.herokuapp.com//");
