@@ -5,16 +5,17 @@ import { MessengerProps } from "../../../../../../types/props/messengerProps";
 import { RootState } from "../../../../../../types/state/rootState";
 import style from "./TopLiner.module.css"
 
-const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: MessengerProps) => {
+const TopLiner: FunctionComponent = () => {
   
-  const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent._id));
+  const currentRespondent = useSelector((state: RootState) => state.respondent.currentRespondent)
+  const status = useSelector((state: RootState) => state.users.usersStatus?.some(respondent => respondent.userId === currentRespondent?._id));
   const [typingStatus, setTypingStatus] = useState("");
-  let typingTimer: ReturnType<typeof setTimeout>;
+  let typingTimer: ReturnType<typeof setTimeout>;3
 
-  const onUserTyping = (userId: string): void => {
-    console.log(currentRespondent._id, '----', userId)
+const onUserTyping = (userId: string): void => {
+    console.log(currentRespondent?._id, '----', userId)
 
-    if(currentRespondent._id === userId) {
+    if(currentRespondent?._id === userId) {
       console.log('currentRespondent is typing ..............', typingStatus)
       clearTimeout(typingTimer);
       setTypingStatus("typing...");
@@ -34,7 +35,7 @@ const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: Messen
 
   return (
     <div className={style.info}>
-      <p className={style.name}>{currentRespondent.name}</p>
+      <p className={style.name}>{currentRespondent?.name}</p>
       <p className={style.status}>{typingStatus ? typingStatus : status ? 'Online' : "Offline"}</p>
     </div>
   )
