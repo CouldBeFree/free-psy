@@ -16,7 +16,7 @@ function* fetchRegisterWorker({payload}: FetchRegisterAction) {
     yield put(registerSuccess());
   } catch (error) {
     let errorMessage: string = error.response.data.message;
-    console.log(error)
+    console.dir(error)
     // translate errors to ukrainian
     if (errorMessage) {
       if (errorMessage.includes("User with email")) { // "User with this email is already exists"

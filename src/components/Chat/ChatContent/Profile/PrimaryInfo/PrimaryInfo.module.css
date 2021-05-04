@@ -4,7 +4,7 @@
   align-items: center;
   background-color: var(--primary-light);
   padding: 15px;
-  overflow: overlay;
+  overflow: auto;
 }
 
 .name {

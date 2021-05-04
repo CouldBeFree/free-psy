@@ -3,7 +3,7 @@
   background-color: var(--primary-light);
   display: flex;
   flex-direction: column;
-  overflow: overlay;
+  overflow: auto;
 }
 
 .respondentList {
