@@ -25,8 +25,12 @@
 }
 
 .avatarBlock {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
   height: 110px;
+  min-width: 110px;
   width: 110px;
   border-radius: 50%;
   background-color: var(--primary-light);
@@ -34,7 +38,9 @@
 }
 
 .avatar {
+  min-height: 120px;
   height: 120px;
+  min-width: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;

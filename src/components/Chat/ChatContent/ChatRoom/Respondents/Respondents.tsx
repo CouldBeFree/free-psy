@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CurrentUser } from "../../../../../types/currentUser";
 import { RespondensProps } from "../../../../../types/props/respondensProps";
@@ -8,11 +8,16 @@ import style from "./Respondents.module.css";
 
 const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProps) => {
 
+  
+  const [filterName, setFilterName] = useState<string>('');
+  console.log(filterName)
+  const filteredUsers = users.filter((user: CurrentUser) => user.name.includes(filterName));
+
   return (
     <div className={style.respondents}>
-      <Searcher placeholder="введіть текст" headline="Пошук повідомлення"/>
+      <Searcher placeholder="введіть текст" headline="Пошук cпіврозмовника" setFilterName={setFilterName}/>
       <div className={style.respondentList}>
-        {users && users.map((user: CurrentUser) =>
+        {filteredUsers && filteredUsers.map((user: CurrentUser) =>
         <NavLink
           className={style.link}
           key={user._id}

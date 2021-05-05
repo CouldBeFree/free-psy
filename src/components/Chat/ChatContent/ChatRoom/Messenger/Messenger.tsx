@@ -8,6 +8,7 @@ import { fetchMessages } from "../../../../../redux/respondentSlice";
 import { MessageInterface } from "../../../../../types/messageInterface";
 import { MessengerProps } from "../../../../../types/props/messengerProps";
 import TopLiner from "./TopLiner/TopLiner";
+import { Link } from "react-router-dom";
 
 const Messenger: FunctionComponent<MessengerProps> = ({currentRespondent}: MessengerProps) => {
 
@@ -22,10 +23,12 @@ const Messenger: FunctionComponent<MessengerProps> = ({currentRespondent}: Messe
   return (
     <div className={style.messengerBlock}>
       <div className={style.respondentenInfo}>
-        <div className={style.avatarBlock}>
-          {currentRespondent.photo && <img className={style.avatar} src={currentRespondent.photo}/>}
-        </div>
-        <TopLiner/>
+        <Link to={`/chat/profile/${currentRespondent._id}`}>
+          <div className={style.avatarBlock}>
+            {currentRespondent.photo && <img className={style.avatar} src={currentRespondent.photo}/>}
+          </div>
+        </Link>
+        <TopLiner currentRespondent={currentRespondent}/>
       </div>
         <div className={style.correspondence}>
           {!isLoading && messages?.map((message: MessageInterface) => <Message key={message.time} message={message} respondentPhoto={currentRespondent.photo}/>)}

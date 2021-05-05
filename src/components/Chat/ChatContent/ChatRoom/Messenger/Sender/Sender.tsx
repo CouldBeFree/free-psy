@@ -12,11 +12,13 @@ const Sender: FunctionComponent = () => {
   const dispatch = useDispatch();
   const respondentName = useSelector((state: RootState) => state.respondent.currentRespondent?.name);
   const currentUserName = useSelector((state: RootState) => state.authentication.currentUser?.name);
-  const currentUserId = useSelector((state: RootState) => state.authentication.currentUser?._id);
+  const currentRespondentName = useSelector((state: RootState) => state.respondent.currentRespondent?.name);
 
   const onTyping = (): void => {
-    console.log(currentUserId , 'typiger user id')
-    socket.emit("typing", currentUserId);
+    socket.emit("typing", {
+      from: currentUserName,
+      to: currentRespondentName
+    });
   }
 
   const onMessageSend = (formData: {message?: string}): void => {

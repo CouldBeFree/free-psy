@@ -29,7 +29,7 @@ const Respondent: FunctionComponent<RespondentProps> = ({user}: RespondentProps)
     <div className={style.respondentBlock} onClick={onRespondentClick}>
       <div className={style.respondentInfo}>
         <div className={style.avatarBlock}>
-          <div className={style.messageCounter}>0</div>
+          {/* <div className={style.messageCounter}>0</div> */}
           {user.photo && <img className={style.avatar} src={user.photo} />}
         </div>
         <div className={style.textInfo}>

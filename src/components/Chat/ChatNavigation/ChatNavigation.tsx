@@ -1,12 +1,21 @@
 import React, { FunctionComponent } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import style from "./ChatNavigation.module.css";
 
 const ChatNavigation: FunctionComponent = () => {
+
+  const match = useRouteMatch<{userId: string;}>('/chat/:userId');
+
   return (
     <div className={style.chatNavigation}>
       <div className={style.iconBlock}>
-        <NavLink exact to="/chat" className={style.icon} activeClassName={style.active}>
+        <NavLink to="/chat" className={style.icon} activeClassName={style.active}
+          isActive={() => {
+            if (match?.params.userId !== 'users' && match?.params.userId !== 'profile') {
+              return true
+            }
+            return false;
+        }}>
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M21 0H3C1.3125 0 0 1.35938 0 3V16.5C0 18.1875 1.3125 19.5 3 19.5H7.5V23.4375C7.5 23.9062 8.01562 24.1875 8.39062 23.9062L14.25 19.5H21C22.6406 19.5 24 18.1875 24 16.5V3C24 1.35938 22.6406 0 21 0Z" fill="#517361"/>
           </svg>
