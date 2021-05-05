@@ -10,7 +10,6 @@ const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProp
 
   
   const [filterName, setFilterName] = useState<string>('');
-  console.log(filterName)
   const filteredUsers = users.filter((user: CurrentUser) => user.name.includes(filterName));
 
   return (
