@@ -13,16 +13,12 @@ const instance = axios.create({
   }
 });
 
-axios.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
-    const token = persistanceService.get('psy-free-token');
-    config.headers.Authorization = `Bearer ${token}`;
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
+instance.interceptors.request.use(function (config: AxiosRequestConfig) {
+  config.headers.Authorization =  `Bearer ${persistanceService.get('psy-free-token')}`;
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+});
 
 export const authApi = {
   register: (name: string, password: string, email: string, userType: string): Promise<AxiosResponse> => {
@@ -31,7 +27,6 @@ export const authApi = {
   },
 
   authMe: (): Promise<CurrentUser> => {
-
     return instance.get("auth/me")
       .then(response => correctionUrl(response.data.data));
   },
