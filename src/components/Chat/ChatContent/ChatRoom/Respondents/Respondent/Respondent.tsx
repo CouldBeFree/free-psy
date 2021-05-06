@@ -35,7 +35,7 @@ const Respondent: FunctionComponent<RespondentProps> = ({user}: RespondentProps)
         <div className={style.textInfo}>
           <p className={style.name}>{user.name}</p>
           <p className={style.lastMessage}>{lastMessage(messages[user.name], user.name)}</p>
-          <p className={style.messageTime}>{status ? 'Online' : "Offline"}</p>
+          <p className={style.messageTime}>{status ? 'Онлайн' : "Офлайн"}</p>
         </div>
       </div>
     </div>

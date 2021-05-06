@@ -52,12 +52,15 @@
 	font-family: 'Montserrat Medium';
   font-size: 18px;
   margin: 0;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .lastMessage {
   font-size: 14px;
-  overflow-x: hidden;
   max-height: 2rem;
+  overflow-x: hidden;
   word-wrap:break-word;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -82,4 +85,38 @@
   align-items: center;
   border-radius: 50%;
   z-index: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .respondentBlock {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .respondentInfo {
+    align-self: center;
+    width: 60px;
+    max-height: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lastMessage {
+    display: none;
+  }
+
+  .messageTime {
+    display: none;
+  }
+
+  .name {
+    font-size: 12px;
+    text-align: center;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    width: 80px;
+  }
 }

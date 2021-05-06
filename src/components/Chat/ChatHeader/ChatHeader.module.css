@@ -2,6 +2,7 @@
   grid-area: h;
   background: linear-gradient(to right, var(--primary-translucent), var(--tertiary-light));
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }

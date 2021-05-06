@@ -8,12 +8,17 @@
 }
 
 .name {
+  width: calc(100% - 30px);
   margin: 0;
   text-align: start;
 	font-family: 'Montserrat Medium';
   font-size: 1.5rem;
   align-self: flex-start;
   margin-bottom: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .status {
@@ -46,4 +51,10 @@
 
 .disabled {
   pointer-events: none;
+}
+
+@media screen and (max-width: 770px) {
+  .primaryInfo {
+    overflow: unset;
+  }
 }

@@ -19,3 +19,47 @@
   font-weight: 400;
   user-select: none;
 }
+
+@media screen and (max-width: 970px) {
+  .logout {
+    gap: 10px;
+    margin-right: 5px;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  .logout {
+    gap: 5px;
+  }
+
+  .icon {
+    height: 30px;
+    width: 28px;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .logout {
+    gap: 5px;
+  }
+
+  .icon {
+    height: 30px;
+    width: 28px;
+  }
+
+  .name {
+    display: none;
+  }
+}

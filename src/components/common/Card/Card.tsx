@@ -1,17 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import style from './Card.module.css';
-import photoExample from '../../../assets/images/example.webp';
+import psychologistDefaultPhoto from '../../../assets/images/example.webp';
+import userDefaultPhoto from '../../../assets/images/default-photo.png';
 import { CardProps } from "../../../types/props/CardProps";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
-const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня...', photoUrl = photoExample, workWith = 'поки що інформація відсутня' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня...', photoUrl, workWith = 'поки що інформація відсутня' }: CardProps) => {
+  
   return (
     <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}> 
       <div className={style.card}>
         <p className={style.name}>{fullName}</p>
         <div className={style.imageBlock}>
-          <img className={style.photo} src={photoUrl} alt="Фото психолога" />
+          {userType === "user" ? 
+            <img className={style.photo} src={photoUrl ? photoUrl : userDefaultPhoto} alt="Фото" /> :
+            <img className={style.photo} src={photoUrl ? photoUrl : psychologistDefaultPhoto} alt="Фото" />
+          }
         </div>
         <div className={style.workWith}>
           {userType === "user" ? "Контакти:" : "Працюю з:"}

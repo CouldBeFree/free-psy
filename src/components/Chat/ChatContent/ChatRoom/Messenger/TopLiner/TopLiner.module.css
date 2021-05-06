@@ -8,10 +8,29 @@
   font-size: 1.6rem;
   margin: 0;
   margin-top: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .status {
   margin: 0;
   font-family: 'Montserrat Thin';
   font-weight: 600;
+}
+
+
+@media screen and (max-width: 900px) {
+  .info {
+    margin-left: 5px;
+  }
+
+  .name {
+    font-size: 1.2rem; 
+  }
+
+  .status {
+    font-size: 0.8rem;
+  }
 }

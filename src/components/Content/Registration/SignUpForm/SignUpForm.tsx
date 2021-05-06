@@ -33,7 +33,7 @@ const SignUpForm: FunctionComponent = () => {
         {
           values.isPsychologist ?
             <div>
-              <Field name="lastName" component="input" validate={composeValidators(required, minLength(2), maxLength(100))} >
+              <Field name="lastName" component="input" validate={composeValidators(required, minLength(2), maxLength(15))} >
                 {({ input, meta }) => (
                   <div className={style.inputBlock}>
                     <label className={style.subtitile}>{meta.error && meta.touched ? <span className={style.error}>{meta.error}</span> : "Прізвище"}</label>
@@ -41,7 +41,7 @@ const SignUpForm: FunctionComponent = () => {
                   </div>
                 )}
               </Field>
-              <Field name="firstName" validate={composeValidators(required, minLength(2), maxLength(100))} >
+              <Field name="firstName" validate={composeValidators(required, minLength(2), maxLength(15))} >
                 {({ input, meta }) => (
                   <div className={style.inputBlock}>
                     <label className={style.subtitile}>{meta.error && meta.touched ? <span className={style.error}>{meta.error}</span> : "Ім'я"}</label>
@@ -50,7 +50,7 @@ const SignUpForm: FunctionComponent = () => {
                 )}
               </Field>
             </div> :
-            <Field name="nickName" validate={composeValidators(required, minLength(2), maxLength(100))} >
+            <Field name="nickName" validate={composeValidators(required, minLength(2), maxLength(30))} >
               {({ input, meta }) => (
                 <div className={style.inputBlock}>
                   <label className={style.subtitile}>{meta.error && meta.touched ? <span className={style.error}>{meta.error}</span> : "Псевдонім"}</label>

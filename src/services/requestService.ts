@@ -6,7 +6,7 @@ import { correctionUrl } from "./correctionUrlService";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'https://chat-server-app-node.herokuapp.com/api/v1/',
+  baseURL: 'https://chat-server-app-node.herokuapp.com/api/v1/api/v1/',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -14,7 +14,10 @@ const instance = axios.create({
 
 export const authApi = {
   register: (name: string, password: string, email: string, userType: string): Promise<AxiosResponse> => {
-    return instance.post("auth/register", {name, email, password, userType });
+    return instance.post("auth/register", {name, email, password, userType })
+      .then(response => {
+        axios.defaults.headers.common = {'Authorization': `Bearer ${response.data.token}`};
+        return response.data.token});
   },
 
   authMe: (): Promise<CurrentUser> => {
@@ -23,7 +26,10 @@ export const authApi = {
   },
 
   login: ( email: string,  password: string ): Promise<AxiosResponse> => {  
-    return instance.post("auth/login", { password, email });
+    return instance.post("auth/login", { password, email })
+      .then(response => {
+        axios.defaults.headers.common = {'Authorization': `Bearer ${response.data.token}`};
+        return response.data.token});
   },
 
   logout: (): Promise<AxiosResponse> => {  

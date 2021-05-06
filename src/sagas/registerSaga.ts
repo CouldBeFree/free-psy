@@ -3,6 +3,7 @@ import { authApi } from "../services/requestService";
 import { fetchRegister, register, registerFailure, registerSuccess, setCurrentUser } from "../redux/authenticationSlice";
 import { FetchRegisterAction } from "../types/actions/fetchRegisterAction";
 import { CurrentUser } from "../types/currentUser";
+import { persistanceService } from "../services/persistenceService";
 
 function* fetchRegisterWorker({payload}: FetchRegisterAction) {
   try {
@@ -10,7 +11,8 @@ function* fetchRegisterWorker({payload}: FetchRegisterAction) {
     // If it is Psychologist return full name, else return nickname
     const userName =  payload.isPsychologist ? `${payload.lastName} ${payload.firstName}` : `${payload.nickName}`;
     const userType =  payload.isPsychologist ? "psychologist" : "user";
-    yield call(authApi.register, userName, payload.password, payload.email, userType);
+    const token: string = yield call(authApi.register, userName, payload.password, payload.email, userType);
+    yield call(persistanceService.set, "psy-free-token", token);
     const currentUser: CurrentUser = yield call(authApi.authMe);
     yield put(setCurrentUser(currentUser));
     yield put(registerSuccess());

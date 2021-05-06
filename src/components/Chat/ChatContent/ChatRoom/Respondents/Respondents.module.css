@@ -23,4 +23,23 @@
 .selected {
   background-color: var(--tertiary-light);
   transition: all .2s;
+  pointer-events: none;
+}
+
+
+@media screen and (max-width: 900px) {
+  .respondents {
+    padding: 0;
+  }
+
+  .respondentList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .respondentList {
+    margin: 0;
+    border-radius: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+  }
 }

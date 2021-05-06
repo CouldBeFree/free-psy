@@ -34,3 +34,9 @@
   margin-left: 15px;
   white-space: pre-wrap;
 }
+
+@media screen and (max-width: 770px) {
+  .infoLine {
+    margin: 5px 0 5px 5px;
+  }
+}

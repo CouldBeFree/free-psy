@@ -54,3 +54,10 @@
   outline: none;
   border: none;
 }
+
+@media screen and (max-width: 900px) {
+  .formBlock {
+    padding: 0 15px;
+    margin: 25px 0 15px 0;
+  }
+}

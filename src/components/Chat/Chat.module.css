@@ -8,3 +8,10 @@
   grid-template-rows: 55px 1fr;
   grid-template-columns: 75px 1fr;
 }
+
+@media screen and (max-width: 900px) {
+  .chatBlock {
+    grid-template-columns: 45px 1fr;
+    grid-template-rows: 45px 1fr;
+  }
+}

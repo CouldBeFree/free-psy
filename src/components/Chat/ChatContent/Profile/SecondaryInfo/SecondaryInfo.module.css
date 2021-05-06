@@ -43,3 +43,10 @@
   line-height: 18px;
   font-size: 18px;
 }
+
+@media screen and (max-width: 770px) {
+  .secondaryInfo {
+    overflow: unset;
+    flex: 1;
+  }
+}
