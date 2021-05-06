@@ -3,10 +3,11 @@ import { CurrentUser } from "../types/currentUser";
 import { MessageInterface } from "../types/messageInterface";
 import { PrimaryInfoFormData } from "../types/primaryInfoFormData";
 import { correctionUrl } from "./correctionUrlService";
+import { persistanceService } from "./persistenceService";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'https://chat-server-app-node.herokuapp.com/api/v1/',
+  baseURL: 'http://localhost:5050/api/v1/',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -14,6 +15,7 @@ const instance = axios.create({
 
 export const authApi = {
   register: (name: string, password: string, email: string, userType: string): Promise<AxiosResponse> => {
+
     return instance.post("auth/register", {name, email, password, userType })
       .then(response => {
         axios.defaults.headers.common = {'Authorization': `Bearer ${response.data.token}`};
@@ -21,7 +23,15 @@ export const authApi = {
   },
 
   authMe: (): Promise<CurrentUser> => {
-    return instance.get("auth/me")
+    
+
+    const token = persistanceService.get('psy-free-token');
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    return instance.get("auth/me", config)
       .then(response => correctionUrl(response.data.data));
   },
 
@@ -53,6 +63,12 @@ export const profileApi = {
 
 export const usersApi = {
   getUsers: (userType: string): Promise<CurrentUser[]> => {
+    const token = persistanceService.get('psy-free-token');
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
     const queryParams: { [key: string]: string } = {
       'user': 'psychologist',
       'psychologist': 'user'
@@ -61,6 +77,13 @@ export const usersApi = {
       .then(response => response.data.data.map((user: CurrentUser) => correctionUrl(user)));
   },
   getMessages: (name: string): Promise<MessageInterface[]> => {
+    
+    const token = persistanceService.get('psy-free-token');
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    
     return instance.get("/users/messages", {
       params: {
         user: name

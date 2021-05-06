@@ -1,6 +1,33 @@
 import React, { FunctionComponent } from 'react';
 import style from './Slider.module.css';
 import Card from '../../../common/Card/Card';
+import Swiper from 'swiper';
+import SwiperCore, { Navigation, Pagination } from 'swiper/core';
+import 'swiper/swiper-bundle.css';
+
+SwiperCore.use([Navigation, Pagination]);
+
+const swiper = new Swiper('.swiper-container', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
 
 const Slider: FunctionComponent = () => {
   return (
