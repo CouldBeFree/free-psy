@@ -63,6 +63,7 @@ export const profileApi = {
 
 export const usersApi = {
   getUsers: (userType: string): Promise<CurrentUser[]> => {
+
     const token = persistanceService.get('psy-free-token');
 
     const config = {
@@ -73,7 +74,8 @@ export const usersApi = {
       'user': 'psychologist',
       'psychologist': 'user'
     }
-    return instance.get(`users?user=${queryParams[userType]}`)
+    
+    return instance.get(`users?user=${queryParams[userType]}`, config)
       .then(response => response.data.data.map((user: CurrentUser) => correctionUrl(user)));
   },
   getMessages: (name: string): Promise<MessageInterface[]> => {
@@ -86,7 +88,8 @@ export const usersApi = {
     
     return instance.get("/users/messages", {
       params: {
-        user: name
+        user: name,
+        config
       }
     }).then(response => response.data.data);
   }
