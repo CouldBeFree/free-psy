@@ -7,7 +7,7 @@ import { persistanceService } from "./persistenceService";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'http://localhost:5050/api/v1/',
+  baseURL: 'https://chat-server-app-node.herokuapp.com/api/v1/',
   headers: {
     'Content-Type': 'application/json'
   }
