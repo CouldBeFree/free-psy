@@ -6,7 +6,7 @@ import { CardProps } from "../../../types/props/CardProps";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
-const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня...', photoUrl, workWith = 'поки що інформація відсутня' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts = 'поки що інформація відсутня...', photoUrl, workWith = 'поки що інформація відсутня...' }: CardProps) => {
   
   return (
     <NavLink to={`/chat/profile/${id}`} className={style.linkWrapper}> 
@@ -21,7 +21,8 @@ const Card: FunctionComponent<CardProps> = ({ id, fullName, userType, contacts =
         <div className={style.workWith}>
           {userType === "user" ? "Контакти:" : "Працюю з:"}
           <p className={classNames(style.shortInfo, {
-            [style.textCenter]: contacts === 'поки що інформація відсутня...'
+            [style.textCenter]: userType === "user" && contacts === 'поки що інформація відсутня...',
+            [style.textCenter]: userType === "psychologist" && workWith === 'поки що інформація відсутня...'
           })}>{userType === "user" ? `${contacts}` : `${workWith}`}</p>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./types/state/rootState";
 import { fetchAuthMe } from "./redux/authenticationSlice";
 import Loader from "./components/common/Loader/Loader";
+import { fetchUserSliders } from "./redux/sliderSlice";
 
 
 const App: FunctionComponent = () => {
@@ -15,6 +16,7 @@ const App: FunctionComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAuthMe());
+    dispatch(fetchUserSliders());
   }, []);
   const isAuthenticated = useSelector((state: RootState)  => state.authentication.isAuthenticated);
   const isLoading = useSelector((state: RootState)  => state.authentication.isLoading);

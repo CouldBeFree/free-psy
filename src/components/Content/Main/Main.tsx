@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Slider from './Slider/Slider';
+import Slider from './Slider/SliderContainer';
 import mainImage from '../../../assets/images/main.png';
 import Presentation from "../../common/Presentation/Presentation";
 

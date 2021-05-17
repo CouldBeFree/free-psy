@@ -72,3 +72,47 @@ code {
   display: flex;
   flex-direction: column;
 }
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+}
+
+.slick-next {
+  right: -25px !important;
+}
+
+.slick-prev {
+  left: -37px !important;
+  z-index: 10;
+}
+
+.slick-prev:before {
+  color: var(--primary-darker) !important;
+  font-size: 2rem !important;
+}
+
+.slick-next:before {
+  color: var(--primary-darker) !important;
+  font-size: 2rem !important;
+}
+
+
+@media screen and (max-width: 450px) {
+  .slick-next {
+    right: 0 !important;
+  }
+  
+  .slick-prev {
+    left: 0 !important;
+    z-index: 10;
+  }
+
+  .slick-prev:before {
+   font-size: 20px !important;
+  }
+
+  .slick-next:before {
+    font-size: 20px !important;
+  }
+}

@@ -75,7 +75,7 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 873px) {
   .card {
     width: 300px;
     font-size: 16px;

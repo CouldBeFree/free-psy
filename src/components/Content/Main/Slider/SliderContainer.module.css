@@ -1,7 +1,7 @@
 .sliderBlock {
   position: relative;
   z-index: 1;
-  padding: 0 15px;
+  padding: 0 45px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -33,8 +33,14 @@
   align-items: center;
 }
 
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 873px) {
   .title {
-   font-size: 32px;
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .sliderBlock {
+    padding: 0 5px;
   }
 }

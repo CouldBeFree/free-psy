@@ -71,6 +71,11 @@ export const usersApi = {
         user: name
       }
     }).then(response => response.data.data);
+  },
+
+  getUserSliders: (): Promise<CurrentUser[]> => {
+    return instance.get("psychologists")
+    .then(response => response.data.data)
   }
 }
 
