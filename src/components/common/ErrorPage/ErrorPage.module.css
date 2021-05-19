@@ -1,0 +1,76 @@
+.pageBackground {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background: linear-gradient(var(--tertiary-translucent), var(--blank));
+  color: var(--secondary);
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1530px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 60px;
+}
+
+.errorImageBlock {
+  align-self: flex-end;
+  flex-basis: 600px;
+  flex-grow: .5;
+}
+
+.errorImage {
+  width: 100%;
+}
+
+.errorMessageBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0px;
+  margin-right: -90px;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.error {
+  align-self: flex-end;
+  font-size: 6rem;
+  margin: 0;
+}
+
+.message {
+  align-self: flex-end;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+@media screen and (max-width: 873px) {
+  .wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+   
+  .errorImageBlock {
+    align-self: flex-end;
+    flex-basis: unset;
+    flex-grow: unset;
+  }
+
+  .error {
+    align-self: center;
+  }
+
+  .errorMessageBlock {
+    margin: 0;
+    flex-grow: unset;
+  }
+}

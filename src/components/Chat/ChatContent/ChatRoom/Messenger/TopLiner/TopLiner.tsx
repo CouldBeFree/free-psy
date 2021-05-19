@@ -34,7 +34,7 @@ const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: Messen
   return (
     <div className={style.info}>
       <p className={style.name}>{currentRespondent?.name}</p>
-      <p className={style.status}>{typingStatus ? typingStatus : status ? 'Online' : "Offline"}</p>
+      <p className={style.status}>{typingStatus ? typingStatus : status ? 'Онлайн' : "Офлайн"}</p>
     </div>
   )
 }

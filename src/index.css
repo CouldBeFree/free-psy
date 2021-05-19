@@ -59,6 +59,8 @@ body {
   height: 100vh;
   min-height: 100vh;
 	font-family: 'Montserrat Regular', sans-serif;
+  width: 100vw;
+  overflow-x: hidden !important;
 }
 
 code {
@@ -73,9 +75,18 @@ code {
   flex-direction: column;
 }
 
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
 .slick-slide {
   display: flex !important;
   justify-content: center;
+}
+
+.slick-slide div {
+  margin: 10px 0;
 }
 
 .slick-next {

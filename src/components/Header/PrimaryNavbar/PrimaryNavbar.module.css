@@ -107,12 +107,12 @@
 
   .checkbox:checked {
     position: fixed;
-    right: 15px;
+    right: 30px;
   }
 
   .checkbox:checked ~ .burger {
     position: fixed;
-    right: 15px;
+    right: 30px;
   }
 
   .checkbox:checked ~ .navbar {

@@ -8,10 +8,12 @@ const Navbar: FunctionComponent = () => {
 
   const onChangeCheckbox = () => {
     setShowNavbar(!showNavbar);
+    document.body.style.overflow = showNavbar ? "visible" : "hidden";
   }
 
   const onChengeURL = () => {
     setShowNavbar(false);
+    document.body.style.overflow = "visible";
   }
 
   return (
