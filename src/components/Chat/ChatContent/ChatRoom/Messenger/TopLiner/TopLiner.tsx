@@ -17,7 +17,7 @@ const TopLiner: FunctionComponent<MessengerProps> = ({currentRespondent}: Messen
     if (currentRespondent.name === issuerInfo.from &&
       currentUserName === issuerInfo.to) {
         clearTimeout(typingTimer);
-        setTypingStatus("typing...");
+        setTypingStatus("друкує...");
         typingTimer = setTimeout(() => {
           setTypingStatus("");
         }, 1000);

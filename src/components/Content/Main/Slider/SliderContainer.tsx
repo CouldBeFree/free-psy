@@ -58,7 +58,7 @@ const SliderContainer: FunctionComponent = () => {
         <h3 className={style.title}>Наші психологи</h3>
         <Slider {...settings}>
           {userSliders && userSliders.map((userSlider: CurrentUser) =>
-            <Card key={userSlider._id} fullName={userSlider.name} workWith={userSlider.workWith} userType={userSlider.userType} photoUrl={`https://chat-server-app-node.herokuapp.com/${userSlider.photo}`}/>)}
+            <Card key={userSlider._id} fullName={userSlider.name} workWith={userSlider.workWith} userType={userSlider.userType} photoUrl={`http://localhost:5050/${userSlider.photo}`}/>)}
         </Slider>
       </div>
     </div>
