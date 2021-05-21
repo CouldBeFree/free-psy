@@ -18,3 +18,21 @@
   overflow-y: overlay;
   padding: 0 15px;
 }
+
+.scrollBlock::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollBlock::-webkit-scrollbar-track {
+  background: var(--primary-light);
+}
+
+.scrollBlock::-webkit-scrollbar-thumb {
+  background: var(--primary-translucent);
+  border-radius: 10px;
+}
+
+.scrollBlock::-webkit-scrollbar-thumb:hover {
+  background: var(--tertiary-semitransparent);
+  cursor: pointer;
+}

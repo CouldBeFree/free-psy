@@ -15,18 +15,20 @@ const Respondents: FunctionComponent<RespondensProps> = ({users}: RespondensProp
   return (
     <div className={style.respondents}>
       <Searcher placeholder="введіть текст" headline="Пошук cпіврозмовника" setFilterName={setFilterName}/>
-      <div className={style.respondentList}>
-        {filteredUsers && filteredUsers.map((user: CurrentUser) =>
-        <NavLink
-          className={style.link}
-          key={user._id}
-          to={`/chat/${user._id}`}
-          activeClassName={style.selected}
-          isActive={(match, location) => location.pathname.includes(user._id)}
-        >
-          <Respondent user={user}/>
-        </NavLink>
-        )}
+      <div className={style.respondentsWrapper}>
+        <div className={style.respondentList}>
+          {filteredUsers && filteredUsers.map((user: CurrentUser) =>
+          <NavLink
+            className={style.link}
+            key={user._id}
+            to={`/chat/${user._id}`}
+            activeClassName={style.selected}
+            isActive={(match, location) => location.pathname.includes(user._id)}
+          >
+            <Respondent user={user}/>
+          </NavLink>
+          )}
+        </div>
       </div>
     </div>
   )

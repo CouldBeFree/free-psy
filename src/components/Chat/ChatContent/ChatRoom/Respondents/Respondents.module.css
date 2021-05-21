@@ -6,13 +6,41 @@
   overflow: auto;
 }
 
+.respondentsWrapper {
+  background-color: var(--blank);
+  max-height: 100%;
+  height: 100%;
+  margin: 15px;
+  border-radius: 15px ;
+  overflow: hidden;
+}
+
 .respondentList {
   background-color: var(--blank);
   max-height: 100%;
   height: 100%;
-  margin: 15px 0 15px 15px;
-  border-radius: 15px;
+  border-radius: 15px ;
   overflow: auto;
+}
+
+
+
+.respondentList::-webkit-scrollbar {
+  width: 7px;
+}
+
+.respondentList::-webkit-scrollbar-track {
+  background: var(--tertiary-light);
+}
+
+.respondentList::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+.respondentList::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-translucent);
+  cursor: pointer;
 }
 
 .link {
