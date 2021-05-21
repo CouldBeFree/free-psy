@@ -10,6 +10,8 @@
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-translucent) var(--primary-light);
 }
 
 .respondentenInfo {

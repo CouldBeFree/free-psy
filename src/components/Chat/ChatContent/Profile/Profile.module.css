@@ -4,7 +4,9 @@
   display: grid;
   grid-template-columns: minmax(390px, .8fr) 2.5fr;
   color: var(--primary-darker);
-  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-translucent) var(--primary-light);
+  
 }
 
 @media screen and (max-width: 770px) {

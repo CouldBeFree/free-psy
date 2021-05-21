@@ -61,6 +61,8 @@ body {
 	font-family: 'Montserrat Regular', sans-serif;
   width: 100vw;
   overflow-x: hidden !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-translucent) var(--primary-light);
 }
 
 ::-webkit-scrollbar {
