@@ -64,7 +64,7 @@
     display: none;
   }
 
-  .respondentList {
+  .respondentsWrapper {
     margin: 0;
     border-radius: 0;
     -ms-overflow-style: none;
