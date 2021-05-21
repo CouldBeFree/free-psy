@@ -60,8 +60,12 @@
     padding: 0;
   }
 
-  .respondentList::-webkit-scrollbar {
+  .respondentsWrapper::-webkit-scrollbar {
     display: none;
+  }
+
+  .respondentList {
+    border-radius: 0;
   }
 
   .respondentsWrapper {
