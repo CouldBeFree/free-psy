@@ -1,3 +1,11 @@
+## Demo
+
+![print](./demo.gif)
+
+## Live page
+
+https://psy-free.herokuapp.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -45,7 +53,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Required env
 
-In the /server folder create .env file 
+In the /server folder create .env file
 
 JWT_EXPIRE=20d (example)
 JWT_SECRET=any string
